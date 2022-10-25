@@ -7,6 +7,7 @@ import SendOrders from './pages/sendorders'
 import CancelOrders from './pages/cancelorders'
 import Settings from './pages/settings'
 import HomeAdmin from './pages/home-admin'
+import ProductsAdmin from './pages/products-admin'
 
 export const privateRoutes = createBrowserRouter([
   {
@@ -36,5 +37,9 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/home-admin',
     element: <HomeAdmin />,
+  },
+  {
+    path: '/products-admin',
+    element: <ProductsAdmin />,
   },
 ])

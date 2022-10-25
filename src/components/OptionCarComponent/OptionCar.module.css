@@ -1,0 +1,19 @@
+.car {
+  background-color: var(--background-grey-light);
+  border-radius: 10px;
+  border: 2px solid var(--background-light);
+  color: var(--font-light);
+  cursor: pointer;
+  margin-bottom: 20px;
+  min-width: 180px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+  transition: all 0.4s;
+}
+
+.car:hover {
+  background-color: var(--background-grey-dark);
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}

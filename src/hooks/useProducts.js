@@ -17,8 +17,8 @@ export default function useProducts() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const addNewProduct = (formData) => {
-    addNewProductServices(formData).then((newProduct) => {
+  const addNewProduct = (formData, file) => {
+    addNewProductServices(formData, file).then((newProduct) => {
       setProducts([...products, newProduct])
     })
   }

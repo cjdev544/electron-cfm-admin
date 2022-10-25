@@ -1,0 +1,37 @@
+.auth {
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.dark {
+  background-color: var(--background-dark);
+  left: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  opacity: 0.85;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+.box {
+  background-color: var(--background-grey-dark);
+  border-radius: 10px;
+  position: relative;
+  padding: 50px 70px;
+  width: 500px;
+  z-index: 1;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  width: 200px;
+}

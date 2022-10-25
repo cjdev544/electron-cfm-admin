@@ -4,7 +4,7 @@ import DeleteProduct from '../ProductsPage/components/DeleteProduct'
 import CreateCategory from '../CategoriesPage/components/CreateCategory'
 import UpdateCategory from '../CategoriesPage/components/UpdateCategory'
 import DeleteCategory from '../CategoriesPage/components/DeleteCategory'
-// import ChangeCostShipping from '../ShippingPage/components/ChangeCostShipping'
+import ChangeCostShipping from '../ShippingPage/components/ChangeCostShipping'
 import style from './OptionCar.module.css'
 
 export default function OptionCarComponent({ option, setComponent }) {
@@ -15,9 +15,9 @@ export default function OptionCarComponent({ option, setComponent }) {
     'Crear categoría': <CreateCategory />,
     'Cambiar categoría': <UpdateCategory />,
     'Eliminar categoría': <DeleteCategory />,
-    // '0 a 2 km': <ChangeCostShipping title={'0 a 2km'} />,
-    // '2 a 6 km': <ChangeCostShipping title={'2 a 6km'} />,
-    // '6 a 10 km': <ChangeCostShipping title={'6 a 10km'} />,
+    '0 a 2 km': <ChangeCostShipping title={'0 a 2km'} />,
+    '2 a 6 km': <ChangeCostShipping title={'2 a 6km'} />,
+    '6 a 10 km': <ChangeCostShipping title={'6 a 10km'} />,
     // 'Top productos': 'top-products',
     // 'Top clientes': 'top-clients',
     // 'Total ventas': 'total-sells',

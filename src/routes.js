@@ -9,6 +9,7 @@ import Settings from './pages/settings'
 import HomeAdmin from './pages/home-admin'
 import ProductsAdmin from './pages/products-admin'
 import CategoriesAdmin from './pages/categories-admin'
+import ShippingAdmin from './pages/shipping-admin'
 
 export const privateRoutes = createBrowserRouter([
   {
@@ -46,5 +47,9 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/categories-admin',
     element: <CategoriesAdmin />,
+  },
+  {
+    path: '/shipping-admin',
+    element: <ShippingAdmin />,
   },
 ])

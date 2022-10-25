@@ -41,9 +41,6 @@ export default function useProductSelect(setSelectedProduct) {
       const productRestCategory = productsList?.filter(
         (product) => product.categoria === categorySelected
       )
-      console.log({ productsList })
-      console.log({ productRestCategory })
-      console.log({ categorySelected })
       setProductForSelect(
         productRestCategory?.map((product) => ({
           key: product.id,

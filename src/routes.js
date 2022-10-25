@@ -10,6 +10,7 @@ import HomeAdmin from './pages/home-admin'
 import ProductsAdmin from './pages/products-admin'
 import CategoriesAdmin from './pages/categories-admin'
 import ShippingAdmin from './pages/shipping-admin'
+import CloseOneRestaurant from './pages/close-one-restaurant'
 
 export const privateRoutes = createBrowserRouter([
   {
@@ -51,5 +52,9 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/shipping-admin',
     element: <ShippingAdmin />,
+  },
+  {
+    path: '/close-one-restaurant',
+    element: <CloseOneRestaurant />,
   },
 ])

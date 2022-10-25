@@ -1,0 +1,53 @@
+.topBar {
+  align-items: center;
+  background-color: var(--background-grey-dark);
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  padding: 0 20px;
+  position: fixed;
+  width: inherit;
+  z-index: 1;
+}
+
+.left i {
+  font-size: 20px !important;
+}
+
+.left:hover {
+  color: var(--font-light);
+  cursor: pointer;
+}
+
+.right {
+  align-items: center;
+  display: flex;
+}
+
+.right a {
+  align-items: center;
+  color: var(--font-light);
+  display: flex;
+  margin-right: 20px;
+}
+
+.right a:hover {
+  color: var(--primary-color);
+}
+
+.right a img {
+  border-radius: 50px;
+  height: 25px;
+  margin-right: 10px;
+  width: 25px;
+}
+
+.right i:hover {
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--danger);
+  cursor: pointer;
+}

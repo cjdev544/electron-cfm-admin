@@ -1,3 +1,4 @@
+import { RouterProvider } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import './css/globals.css'
 import 'semantic-ui-css/semantic.min.css'
@@ -8,15 +9,16 @@ import ProductsState from './context/products/ProductsState'
 import OrdersState from './context/orders/OrdersState'
 import useAuth from './hooks/useAuth'
 import Auth from './components/Auth'
+import { privateRoutes } from './routes'
 
 export default function App() {
   const { user } = useAuth()
-  console.log(user)
+
   return (
     <RestaurantsState>
       <ProductsState>
         <OrdersState>
-          {user ? <h1>Mi App</h1> : <Auth />}
+          {user ? <RouterProvider router={privateRoutes} /> : <Auth />}
           <ToastContainer
             position='top-right'
             autoClose={5000}

@@ -1,10 +1,10 @@
 import LoggedLayout from '../layouts/LoggedLayout'
-import HomePage from '../components/HomePage'
+import NewOrdersPage from '../components/NewOrdersPage'
 
 export default function Home() {
   return (
     <LoggedLayout>
-      <HomePage />
+      <NewOrdersPage />
     </LoggedLayout>
   )
 }

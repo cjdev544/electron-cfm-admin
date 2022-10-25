@@ -1,0 +1,21 @@
+.close {
+  height: 100%;
+  width: 100%;
+  color: var(--font-light);
+  background-color: rgba(252, 89, 89, 0.5);
+}
+
+.open {
+  height: 100%;
+  width: 100%;
+  color: var(--font-light);
+  background-color: rgba(152, 252, 157, 0.5);
+}
+
+.line {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-top: 10px;
+  padding-top: 10px;
+}

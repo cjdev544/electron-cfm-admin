@@ -1,0 +1,74 @@
+.order {
+  background-color: var(--font-light);
+  border-radius: 5px;
+}
+
+.order p {
+  margin: 0;
+}
+
+.header {
+  border-radius: 5px 5px 0 0;
+  color: var(--font-light);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.delivery {
+  background-color: var(--background-grey-light);
+  color: var(--font-light);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.delivery span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.address {
+  background-color: var(--font-grey);
+}
+
+.address p {
+  color: var(--font-dark);
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.body {
+  color: var(--font-dark);
+}
+
+.product {
+  border: 1px solid var(--border-grey-light);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+
+.product:first-of-type {
+  padding-top: 10px;
+}
+
+.product:last-of-type {
+  padding-bottom: 10px;
+}
+
+.total {
+  background-color: var(--font-grey);
+  border-radius: 0 0 5px 5px;
+  color: var(--font-dark);
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.noPay {
+  font-weight: bold;
+  padding: 5px 10px;
+}

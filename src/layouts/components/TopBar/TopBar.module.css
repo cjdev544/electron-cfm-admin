@@ -28,18 +28,18 @@
   align-items: center;
   color: var(--font-light);
   display: flex;
-  margin-right: 20px;
+  justify-content: center;
+  margin-right: 30px;
 }
 
-.right a:hover {
-  color: var(--primary-color);
-}
-
-.right a img {
-  border-radius: 50px;
-  height: 25px;
+.right i {
+  font-size: 1.5rem;
   margin-right: 10px;
-  width: 25px;
+}
+
+.right a:hover,
+.right a i:hover {
+  color: var(--primary-color);
 }
 
 .right i:hover {

@@ -8,6 +8,7 @@ import CancelOrders from './pages/cancelorders'
 import Settings from './pages/settings'
 import HomeAdmin from './pages/home-admin'
 import ProductsAdmin from './pages/products-admin'
+import CategoriesAdmin from './pages/categories-admin'
 
 export const privateRoutes = createBrowserRouter([
   {
@@ -41,5 +42,9 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/products-admin',
     element: <ProductsAdmin />,
+  },
+  {
+    path: '/categories-admin',
+    element: <CategoriesAdmin />,
   },
 ])

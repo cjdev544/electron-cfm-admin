@@ -23,16 +23,15 @@ export default function useProducts() {
     })
   }
 
-  const updateProduct = (product, file) => {
-    updateProductServices(product, file).then((productUpdated) => {
-      const productsUpdated = products.map((prod) =>
-        prod.id !== product.id ? prod : productUpdated
-      )
-      setProducts(productsUpdated)
-    })
+  const updateProduct = async (product, file) => {
+    const productUpdated = await updateProductServices(product, file)
+    const productsUpdated = products.map((prod) =>
+      prod.id !== product.id ? prod : productUpdated
+    )
+    setProducts(productsUpdated)
   }
 
-  const deleteProduct = async (product) => deleteProductServices(product)
+  const deleteProduct = async (product) => await deleteProductServices(product)
 
   const getAllProducts = async () => {
     const products = await getAllProductsServices()

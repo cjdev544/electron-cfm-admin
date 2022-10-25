@@ -15,10 +15,10 @@ export default function useProductSelect(setSelectedProduct) {
 
   useEffect(() => {
     if (restaurantOptions) {
-      const restaurantSelected = restaurants?.filter(
+      const restaurantSelected = restaurants?.find(
         (restaurant) => restaurant?.page === restaurantOptions
       )
-      const categoriesArray = restaurantSelected[0].categories
+      const categoriesArray = restaurantSelected.categories
       setCategories(
         categoriesArray?.map((category) => ({
           key: category,
@@ -30,8 +30,8 @@ export default function useProductSelect(setSelectedProduct) {
         products?.filter((product) => product.restaurante === restaurantOptions)
       )
 
-      setCategorySelected(null)
-      setSelectedProduct(null)
+      // setCategorySelected(null)
+      // setSelectedProduct(null)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantOptions, restaurants, products])
@@ -41,6 +41,9 @@ export default function useProductSelect(setSelectedProduct) {
       const productRestCategory = productsList?.filter(
         (product) => product.categoria === categorySelected
       )
+      console.log({ productsList })
+      console.log({ productRestCategory })
+      console.log({ categorySelected })
       setProductForSelect(
         productRestCategory?.map((product) => ({
           key: product.id,

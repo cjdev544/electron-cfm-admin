@@ -25,12 +25,11 @@ export default function useOrders() {
   useEffect(() => {
     getOrders()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [orders])
 
   const getOrders = async () => {
-    if (allOrders.length > 0) {
+    if (allOrders.length === 0) {
       const allOrders = await getAllOrdersServices()
-      console.log(allOrders)
       const orders = allOrders?.filter((order) => order.cancel === null)
       setAllOrders(orders)
     }

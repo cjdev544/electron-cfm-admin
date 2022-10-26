@@ -4,11 +4,19 @@ import OrdersContext from './ordersContext'
 
 export default function OrdersState({ children }) {
   const [orders, setOrders] = useState([])
+  const [allOrders, setAllOrders] = useState([])
   const [startAlarm, setStartAlarm] = useState(null)
 
   return (
     <OrdersContext.Provider
-      value={{ orders, startAlarm, setOrders, setStartAlarm }}
+      value={{
+        orders,
+        allOrders,
+        startAlarm,
+        setOrders,
+        setAllOrders,
+        setStartAlarm,
+      }}
     >
       {children}
     </OrdersContext.Provider>

@@ -9,7 +9,7 @@ export default function OptionCar({ option }) {
     Categorías: '/categories-admin',
     'Costos de envío': '/shipping-admin',
     'Cupones descuento': '/discount-admin',
-    Estadisticas: '/stadistics',
+    Estadisticas: '/statistics',
     'Productos promoción': '/promotion-products',
     'Productos populares': '/popular-products',
     'Top productos': '/top-products',

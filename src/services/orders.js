@@ -1,4 +1,11 @@
-import { collection, doc, onSnapshot, updateDoc } from 'firebase/firestore'
+import {
+  collection,
+  doc,
+  getDocs,
+  onSnapshot,
+  updateDoc,
+  query,
+} from 'firebase/firestore'
 
 import { db } from '../firebase/config'
 
@@ -23,4 +30,14 @@ export const updateOrderServices = async (order) => {
   await updateDoc(doc(db, 'orders', `${order.id}`), {
     ...order,
   })
+}
+
+export const getAllOrdersServices = async () => {
+  const array = []
+  const q = query(collection(db, 'orders'))
+  const querySnapshot = await getDocs(q)
+  querySnapshot.forEach((doc) => {
+    array.push({ id: doc.id, ...doc.data() })
+  })
+  return array
 }

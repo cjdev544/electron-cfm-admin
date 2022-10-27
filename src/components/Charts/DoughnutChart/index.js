@@ -27,6 +27,7 @@ export default function DoughnutChart({
       ],
     }
     setData(data)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scores])
 
   if (!data) return <p>Cargando...</p>

@@ -7,6 +7,9 @@ import style from './StatisticsSell.module.css'
 export default function StatisticsSell() {
   const {
     payPercentage,
+    totalAmount,
+    dataWithCar,
+    dataWithCash,
     availableYears,
     yearSelected,
     montSelected,
@@ -15,6 +18,7 @@ export default function StatisticsSell() {
     scores,
     labels,
     legend,
+    allOrders,
     getOrdersForYear,
     setIsShowAmount,
     setShowMonths,
@@ -82,12 +86,30 @@ export default function StatisticsSell() {
           ))}
       </div>
       {!yearSelected && (
-        <DoughnutChart
-          scores={payPercentage}
-          legend={['% Pagos Tarjeta', '% Pagos efectivo']}
-          bgColor={['rgba(153, 102, 255, 0.2)', 'rgba(75, 192, 192, 0.2)']}
-          borderColor={['rgba(153, 102, 255, 1)', 'rgba(75, 192, 192, 1)']}
-        />
+        <div className={style.flexChart}>
+          <DoughnutChart
+            scores={payPercentage}
+            legend={['% Pagos Tarjeta', '% Pagos efectivo']}
+            bgColor={['rgba(153, 102, 255, 0.2)', 'rgba(75, 192, 192, 0.2)']}
+            borderColor={['rgba(153, 102, 255, 1)', 'rgba(75, 192, 192, 1)']}
+          />
+          <div className={style.totals}>
+            <p>
+              <span>Pagos totales:</span> {allOrders?.length}
+            </p>
+            <p>
+              <span>Total en ventas:</span> {totalAmount}€
+            </p>
+            <p>
+              <span>Pagos con targeta:</span> {dataWithCar[0]} -{' '}
+              {dataWithCar[1]}€
+            </p>
+            <p>
+              <span>Pagos con efectivo:</span> {dataWithCash[0]} -{' '}
+              {dataWithCash[1]}€
+            </p>
+          </div>
+        </div>
       )}
       {yearSelected && (
         <LineChart scores={scores} labels={labels} legend={legend} />

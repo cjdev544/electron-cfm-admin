@@ -28,6 +28,22 @@
   background-color: rgba(36, 36, 36, 0.7);
 }
 
+.flexChart {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.totals {
+  font-size: 1.2rem;
+}
+
+.totals span {
+  color: #fff;
+  font-weight: bold;
+}
+
 .flex {
   display: flex;
   flex-wrap: wrap;

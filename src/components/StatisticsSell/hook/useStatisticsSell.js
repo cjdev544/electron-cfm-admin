@@ -10,6 +10,9 @@ export default function useStatisticsSell() {
   const { allOrders } = useOrders()
 
   const [availableYears, setAvailableYears] = useState([])
+  const [totalAmount, setTotalAmount] = useState(0)
+  const [dataWithCar, setDataWithCar] = useState([])
+  const [dataWithCash, setDataWithCash] = useState([])
   const [payPercentage, setPayPercentage] = useState([])
   const [yearSelected, setYearSelected] = useState(null)
   const [montSelected, setMontSelected] = useState(null)
@@ -30,6 +33,30 @@ export default function useStatisticsSell() {
       })
       setAvailableYears(years)
     }
+  }, [allOrders])
+
+  useEffect(() => {
+    let total = 0
+    allOrders.forEach((order) => {
+      total += order.totalCompra
+    })
+    setTotalAmount(round(total), 2)
+
+    // Amount with car
+    let totalWithCar = 0
+    const payWithCar = allOrders.filter((order) => order.idPago)
+    payWithCar.forEach((order) => {
+      totalWithCar += order.totalCompra
+    })
+    setDataWithCar([payWithCar.length, totalWithCar])
+
+    // Amount with cash
+    let totalWithCash = 0
+    const payWithCash = allOrders.filter((order) => !order.idPago)
+    payWithCash.forEach((order) => {
+      totalWithCash += order.totalCompra
+    })
+    setDataWithCash([payWithCash.length, totalWithCash])
   }, [allOrders])
 
   useEffect(() => {
@@ -123,6 +150,9 @@ export default function useStatisticsSell() {
 
   return {
     payPercentage,
+    totalAmount,
+    dataWithCar,
+    dataWithCash,
     availableYears,
     yearSelected,
     montSelected,
@@ -131,6 +161,7 @@ export default function useStatisticsSell() {
     scores,
     labels,
     legend,
+    allOrders,
     getOrdersForYear,
     setIsShowAmount,
     setShowMonths,

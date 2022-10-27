@@ -5,21 +5,23 @@ import style from './DoughnutChart.module.css'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default function DoughnutChart({ scores }) {
+export default function DoughnutChart({
+  scores,
+  legend,
+  bgColor,
+  borderColor,
+}) {
   const [data, setData] = useState(null)
 
   useEffect(() => {
     const data = {
-      labels: ['% Pagos Tarjeta', '% Pagos efectivo'],
+      labels: legend,
       datasets: [
         {
           label: '# of Votes',
           data: scores,
-          backgroundColor: [
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-          ],
-          borderColor: ['rgba(153, 102, 255, 1)', 'rgba(75, 192, 192, 1)'],
+          backgroundColor: bgColor,
+          borderColor: borderColor,
           borderWidth: 1,
         },
       ],

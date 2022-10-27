@@ -1,7 +1,7 @@
 import useStatisticsSell from './hook/useStatisticsSell'
 import { MONTHS } from '../../helpers/getLabels'
-import LineChart from './components/LineChart'
-import DoughnutChart from './components/DoughnutChart'
+import LineChart from '../Charts/LineChart'
+import DoughnutChart from '../Charts/DoughnutChart'
 import style from './StatisticsSell.module.css'
 
 export default function StatisticsSell() {
@@ -81,7 +81,14 @@ export default function StatisticsSell() {
             </div>
           ))}
       </div>
-      {!yearSelected && <DoughnutChart scores={payPercentage} />}
+      {!yearSelected && (
+        <DoughnutChart
+          scores={payPercentage}
+          legend={['% Pagos Tarjeta', '% Pagos efectivo']}
+          bgColor={['rgba(153, 102, 255, 0.2)', 'rgba(75, 192, 192, 0.2)']}
+          borderColor={['rgba(153, 102, 255, 1)', 'rgba(75, 192, 192, 1)']}
+        />
+      )}
       {yearSelected && (
         <LineChart scores={scores} labels={labels} legend={legend} />
       )}

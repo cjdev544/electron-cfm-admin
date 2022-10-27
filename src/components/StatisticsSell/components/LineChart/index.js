@@ -5,10 +5,8 @@ import {
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
   Legend,
-  Filler,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 import style from './LineChart.module.css'
@@ -18,10 +16,8 @@ ChartJS.register(
   LinearScale,
   PointElement,
   LineElement,
-  Title,
   Tooltip,
-  Legend,
-  Filler
+  Legend
 )
 
 const options = {

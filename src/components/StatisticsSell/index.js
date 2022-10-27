@@ -1,10 +1,12 @@
 import useStatisticsSell from './hook/useStatisticsSell'
 import { MONTHS } from '../../helpers/getLabels'
 import LineChart from './components/LineChart'
+import DoughnutChart from './components/DoughnutChart'
 import style from './StatisticsSell.module.css'
 
 export default function StatisticsSell() {
   const {
+    payPercentage,
     availableYears,
     yearSelected,
     montSelected,
@@ -79,6 +81,7 @@ export default function StatisticsSell() {
             </div>
           ))}
       </div>
+      {!yearSelected && <DoughnutChart scores={payPercentage} />}
       {yearSelected && (
         <LineChart scores={scores} labels={labels} legend={legend} />
       )}

@@ -12,6 +12,7 @@ export default function useStatisticsSell() {
   const [availableYears, setAvailableYears] = useState([])
   const [totalAmount, setTotalAmount] = useState(0)
   const [dataWithCar, setDataWithCar] = useState([])
+  const [dataWithYearOrMont, setDataWithYearOrMont] = useState([])
   const [dataWithCash, setDataWithCash] = useState([])
   const [payPercentage, setPayPercentage] = useState([])
   const [yearSelected, setYearSelected] = useState(null)
@@ -108,6 +109,15 @@ export default function useStatisticsSell() {
     }
   }
 
+  const dataSellsAndAmount = (orders) => {
+    let total = 0
+    const length = orders.length
+    orders.forEach((order) => {
+      total += order.totalCompra
+    })
+    setDataWithYearOrMont([length, total])
+  }
+
   const getOrdersForYear = (year) => {
     setYearSelected(year)
     setShowMonths(false)
@@ -122,6 +132,7 @@ export default function useStatisticsSell() {
       amountArray[mont - 1] += round(order.totalCompra, 2)
       sellsArray[mont - 1] += 1
     })
+    dataSellsAndAmount(orders)
     setLabels(MONTHS)
     setScoresYearAmdMont(amountArray, sellsArray)
   }
@@ -144,6 +155,7 @@ export default function useStatisticsSell() {
       amountArray[day] += round(order.totalCompra, 2)
       sellsArray[day] += 1
     })
+    dataSellsAndAmount(ordersMont)
     setLabels(DAYS)
     setScoresYearAmdMont(amountArray, sellsArray)
   }
@@ -162,6 +174,7 @@ export default function useStatisticsSell() {
     labels,
     legend,
     allOrders,
+    dataWithYearOrMont,
     getOrdersForYear,
     setIsShowAmount,
     setShowMonths,

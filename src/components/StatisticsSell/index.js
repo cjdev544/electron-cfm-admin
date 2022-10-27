@@ -19,6 +19,7 @@ export default function StatisticsSell() {
     labels,
     legend,
     allOrders,
+    dataWithYearOrMont,
     getOrdersForYear,
     setIsShowAmount,
     setShowMonths,
@@ -112,7 +113,13 @@ export default function StatisticsSell() {
         </div>
       )}
       {yearSelected && (
-        <LineChart scores={scores} labels={labels} legend={legend} />
+        <>
+          <div className={style.totals}>
+            <span>Ventas totales: </span> {dataWithYearOrMont[0]} -{' '}
+            {dataWithYearOrMont[1]}€
+          </div>
+          <LineChart scores={scores} labels={labels} legend={legend} />
+        </>
       )}
     </div>
   )

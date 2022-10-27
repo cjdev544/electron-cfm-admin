@@ -1,79 +1,23 @@
-import { useEffect, useState } from 'react'
-import { format } from 'date-fns'
-import { es } from 'date-fns/locale'
-import { round } from 'mathjs'
-
-import useOrders from '../../hooks/useOrders'
-import style from './StatisticsSell.module.css'
+import useStatisticsSell from './hook/useStatisticsSell'
+import { MONTHS } from '../../helpers/getLabels'
 import LineChart from './components/LineChart'
-import { DAYS, MONTHS } from '../../helpers/getLabels'
+import style from './StatisticsSell.module.css'
 
 export default function StatisticsSell() {
-  const { allOrders } = useOrders()
-
-  const [availableYears, setAvailableYears] = useState([])
-  const [yearSelected, setYearSelected] = useState(null)
-  const [montSelected, setMontSelected] = useState(null)
-  const [showMonths, setShowMonths] = useState(false)
-  const [scores, setScores] = useState([])
-  const [labels, setLabels] = useState([])
-  const [legend, setLegend] = useState('')
-  const [isShowAmount, setIsShowAmount] = useState(true)
-
-  useEffect(() => {
-    if (allOrders.length > 0) {
-      const years = []
-
-      allOrders.forEach((order) => {
-        const orderYear = format(order.createdAt, 'y')
-        const yearExist = years.find((element) => element === orderYear)
-        if (!yearExist) years.push(orderYear)
-      })
-      setAvailableYears(years)
-    }
-  }, [allOrders])
-
-  useEffect(() => {
-    if (!montSelected) {
-      getOrdersForYear(yearSelected)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [montSelected, isShowAmount])
-
-  const ordersForYear = (year) => {
-    const orders = allOrders.filter(
-      (order) => format(order.createdAt, 'y') === year
-    )
-    return orders
-  }
-
-  const setScoresYear = (amountArray, sellsArray) => {
-    if (isShowAmount) {
-      setScores(amountArray)
-      setLabels(MONTHS)
-      setLegend('Ventas en €')
-    } else {
-      setScores(sellsArray)
-      setLabels(MONTHS)
-      setLegend('Número de ventas')
-    }
-  }
-
-  const getOrdersForYear = (year) => {
-    setYearSelected(year)
-    setShowMonths(false)
-
-    const orders = ordersForYear(year)
-
-    const amountArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    const sellsArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    orders.forEach((order) => {
-      const mont = Number(format(order.createdAt, 'M'))
-      amountArray[mont - 1] += round(order.totalCompra, 2)
-      sellsArray[mont - 1] += 1
-    })
-    setScoresYear(amountArray, sellsArray)
-  }
+  const {
+    availableYears,
+    yearSelected,
+    montSelected,
+    isShowAmount,
+    showMonths,
+    scores,
+    labels,
+    legend,
+    getOrdersForYear,
+    setIsShowAmount,
+    setShowMonths,
+    getOrdersForMont,
+  } = useStatisticsSell()
 
   return (
     <div className={style.settings}>
@@ -84,30 +28,54 @@ export default function StatisticsSell() {
             <div
               key={year}
               className={style.button}
+              style={
+                yearSelected === year
+                  ? { borderColor: '#1db954', color: '#1db954' }
+                  : { color: '#fff' }
+              }
               onClick={() => getOrdersForYear(year)}
             >
-              <h3>{year}</h3>
+              <h4>{year}</h4>
             </div>
           ))}
       </div>
-      <div>
+      <div className={style.flexTop}>
         {yearSelected &&
           (isShowAmount ? (
-            <p onClick={() => setIsShowAmount(false)}>
+            <div
+              className={style.buttonTop}
+              onClick={() => setIsShowAmount(false)}
+            >
               Cambiar grafico por cantidad de ventas
-            </p>
+            </div>
           ) : (
-            <p onClick={() => setIsShowAmount(true)}>
+            <div
+              className={style.buttonTop}
+              onClick={() => setIsShowAmount(true)}
+            >
               Cambiar grafico por ganancias en €
-            </p>
+            </div>
           ))}
-        {yearSelected && <p onClick={() => setShowMonths(true)}>Ver meces</p>}
+        {yearSelected && !showMonths && (
+          <div className={style.buttonTop} onClick={() => setShowMonths(true)}>
+            Ver meces
+          </div>
+        )}
       </div>
       <div className={style.flex}>
         {showMonths &&
           MONTHS.map((mont) => (
-            <div key={mont} className={style.button}>
-              <h3>{mont}</h3>
+            <div
+              key={mont}
+              className={style.button}
+              style={
+                montSelected === mont
+                  ? { borderColor: '#1db954', color: '#1db954' }
+                  : { color: '#fff' }
+              }
+              onClick={() => getOrdersForMont(mont)}
+            >
+              <h4>{mont}</h4>
             </div>
           ))}
       </div>

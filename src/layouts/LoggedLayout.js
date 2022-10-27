@@ -2,7 +2,6 @@ import { Grid } from 'semantic-ui-react'
 
 import MenuLeft from './components/MenuLeft'
 import TopBar from './components/TopBar'
-import BannerHome from './components/BannerHome'
 import OpenOrClose from './components/OpenOrClose'
 // import SongAlarm from '../components/SongAlarm'
 
@@ -15,7 +14,6 @@ const LoggedLayout = ({ children }) => {
         </Grid.Column>
         <Grid.Column className='content' width={13}>
           <TopBar />
-          {/* <BannerHome /> */}
           {children}
         </Grid.Column>
       </Grid.Row>

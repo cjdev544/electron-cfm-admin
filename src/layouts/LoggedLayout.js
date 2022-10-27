@@ -15,7 +15,7 @@ const LoggedLayout = ({ children }) => {
         </Grid.Column>
         <Grid.Column className='content' width={13}>
           <TopBar />
-          <BannerHome />
+          {/* <BannerHome /> */}
           {children}
         </Grid.Column>
       </Grid.Row>

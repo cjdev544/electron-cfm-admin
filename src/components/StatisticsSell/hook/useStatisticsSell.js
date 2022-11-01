@@ -113,7 +113,7 @@ export default function useStatisticsSell() {
     let total = 0
     const length = orders.length
     orders.forEach((order) => {
-      total += order.totalCompra
+      total = round(total + order.totalCompra, 2)
     })
     setDataWithYearOrMont([length, total])
   }
@@ -129,7 +129,10 @@ export default function useStatisticsSell() {
     const sellsArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     orders.forEach((order) => {
       const mont = Number(format(order.createdAt, 'M'))
-      amountArray[mont - 1] += round(order.totalCompra, 2)
+      amountArray[mont - 1] = round(
+        amountArray[mont - 1] + order.totalCompra,
+        2
+      )
       sellsArray[mont - 1] += 1
     })
     dataSellsAndAmount(orders)
@@ -152,7 +155,7 @@ export default function useStatisticsSell() {
     ]
     ordersMont.forEach((order) => {
       const day = Number(format(order.createdAt, 'd'))
-      amountArray[day] += round(order.totalCompra, 2)
+      amountArray[day] = round(amountArray[day] + order.totalCompra, 2)
       sellsArray[day] += 1
     })
     dataSellsAndAmount(ordersMont)

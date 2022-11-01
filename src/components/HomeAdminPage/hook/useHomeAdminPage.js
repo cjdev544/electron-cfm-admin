@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import useProducts from '../../../hooks/useProducts'
 import useHomePage from '../../../hooks/useHomePage'
 
 export default function useHomeAdminPage() {
+  const navigate = useNavigate()
   const [dataHomepage, setDataHomepage] = useState(null)
   const [dataSection, setDataSection] = useState(null)
   const [sectionTitle, setSectionTitle] = useState('')
@@ -13,7 +14,6 @@ export default function useHomeAdminPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [oldProductsSelected, setOldProductsSelected] = useState(null)
 
-  const navigate = useNavigate()
   const { products } = useProducts()
   const { dataHome, updateHomepage } = useHomePage()
 

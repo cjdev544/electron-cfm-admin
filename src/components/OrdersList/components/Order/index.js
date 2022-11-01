@@ -18,7 +18,7 @@ export default function Order({ order }) {
   })
 
   return (
-    <Link href={`/order/${order.id}`} className='link'>
+    <Link to={`/order/${order.id}`} className='link'>
       <div className={style.order}>
         <div
           className={style.header}

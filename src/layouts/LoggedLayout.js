@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 import MenuLeft from './components/MenuLeft'
 import TopBar from './components/TopBar'
 import OpenOrClose from './components/OpenOrClose'
-// import SongAlarm from '../components/SongAlarm'
+import SongAlarm from '../components/SongAlarm'
 
 const LoggedLayout = ({ children }) => {
   return (
@@ -20,7 +20,7 @@ const LoggedLayout = ({ children }) => {
       <Grid.Row>
         <Grid.Column width={16}>
           <OpenOrClose />
-          {/* <SongAlarm /> */}
+          <SongAlarm />
         </Grid.Column>
       </Grid.Row>
     </Grid>

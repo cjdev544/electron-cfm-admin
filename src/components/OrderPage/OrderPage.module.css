@@ -1,0 +1,114 @@
+.order {
+  background-color: var(--background-light);
+  border-radius: 5px;
+  font-size: 18px;
+  margin: 50px auto;
+  margin-top: 70px;
+  max-width: 700px;
+}
+
+.order p {
+  margin: 0;
+}
+
+.order span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.header {
+  border-radius: 5px 5px 0 0;
+  color: var(--font-light);
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delivery {
+  background-color: var(--background-grey-light);
+  border-bottom: 1px solid var(--border-grey-light);
+  color: var(--font-light);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-ligth);
+}
+
+.product {
+  border-bottom: 1px solid var(--border-grey-light);
+  display: flex;
+  justify-content: space-between;
+}
+
+.product p {
+  color: var(--font-dark);
+  padding: 10px 20px;
+}
+
+.product p span {
+  color: var(--font-dark);
+  font-size: 22px;
+  font-weight: bold;
+}
+.costDelivery {
+  display: flex;
+  font-size: 16px;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}
+
+.total {
+  border-bottom: 1px solid var(--border-grey-light);
+  color: var(--font-dark);
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.total span {
+  font-size: 16px;
+}
+
+.client {
+  background-color: var(--background-grey-light);
+}
+
+.client p {
+  color: var(--font-light);
+  padding: 10px;
+  text-align: center;
+}
+
+.dataClient {
+  border-bottom: 1px solid var(--border-grey-light);
+  color: var(--font-dark);
+  padding: 10px;
+}
+
+.others {
+  color: var(--font-dark);
+  padding: 10px;
+}
+
+.formContainer {
+  padding-bottom: 20px;
+}
+
+.resForm {
+  background-color: var(--background-grey-dark) !important;
+  border-radius: 5px;
+  margin: 20px auto;
+  max-width: 400px !important;
+  padding: 20px;
+}
+
+.noPay {
+  font-weight: bold;
+  padding: 5px 10px;
+}

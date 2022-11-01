@@ -11,6 +11,7 @@ import ProductsAdmin from './pages/products-admin'
 import CategoriesAdmin from './pages/categories-admin'
 import ShippingAdmin from './pages/shipping-admin'
 import CloseOneRestaurant from './pages/close-one-restaurant'
+import Order from './pages/order'
 import Statistics from './pages/statistics'
 
 export const privateRoutes = createBrowserRouter([
@@ -61,5 +62,9 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/statistics',
     element: <Statistics />,
+  },
+  {
+    path: '/order/:id',
+    element: <Order />,
   },
 ])

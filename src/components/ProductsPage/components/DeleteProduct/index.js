@@ -8,7 +8,6 @@ import style from './DeleteProduct.module.css'
 
 export default function DeleteProduct() {
   const navigate = useNavigate()
-
   const { deleteProduct } = useProducts()
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [isLoading, setIsLoading] = useState(false)

@@ -6,6 +6,7 @@ import useRestaurants from '../../../../../hooks/useRestaurants'
 import useProducts from '../../../../../hooks/useProducts'
 
 export default function useDeleteCategory() {
+  const navigate = useNavigate()
   const {
     restaurants,
     setRestaurants,
@@ -13,7 +14,6 @@ export default function useDeleteCategory() {
     getRestaurants,
   } = useRestaurants()
   const { products, setProducts, getAllProducts, deleteProduct } = useProducts()
-  const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(false)
   const [categories, setCategories] = useState(null)

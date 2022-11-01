@@ -8,7 +8,6 @@ import useProducts from '../../../../../hooks/useProducts'
 
 export default function useForm(product) {
   const navigate = useNavigate()
-
   const { restaurants } = useRestaurants()
   const { products, setProducts, addNewProduct, updateProduct } = useProducts()
 

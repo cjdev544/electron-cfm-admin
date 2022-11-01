@@ -1,0 +1,5 @@
+.dataClient {
+  border-bottom: 1px solid var(--border-grey-light);
+  color: var(--font-dark);
+  padding: 10px;
+}

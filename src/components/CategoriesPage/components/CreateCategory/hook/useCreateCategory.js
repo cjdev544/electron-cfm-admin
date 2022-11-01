@@ -11,6 +11,7 @@ export default function useCreateCategory() {
     updateCategoriesRestaurant,
     getRestaurants,
   } = useRestaurants()
+
   const navigate = useNavigate()
 
   const [isLoading, setIsLoading] = useState(false)

@@ -28,11 +28,9 @@ export default function useOrders() {
   }, [orders])
 
   const getOrders = async () => {
-    if (allOrders.length === 0) {
-      const allOrders = await getAllOrdersServices()
-      const orders = allOrders?.filter((order) => order.cancel === null)
-      setAllOrders(orders)
-    }
+    const allOrders = await getAllOrdersServices()
+    const orders = allOrders?.filter((order) => order.cancel !== true)
+    setAllOrders(orders)
   }
 
   const updateOrder = async (order) => {

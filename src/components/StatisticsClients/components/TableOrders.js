@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { Table } from 'semantic-ui-react'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function TableOrders({ ordersClient }) {
-  const [ordersSort, setOrdersSort] = useState([])
+  const [ordersSort, setOrdersSort] = useState(null)
 
   useEffect(() => {
     if (ordersClient) {
@@ -11,6 +12,8 @@ export default function TableOrders({ ordersClient }) {
       setOrdersSort(ordersSort)
     }
   }, [ordersClient])
+
+  if (!ordersSort?.length) return null
 
   return (
     <Table celled compact definition>
@@ -24,12 +27,12 @@ export default function TableOrders({ ordersClient }) {
 
       <Table.Body>
         {ordersSort.map((order, idx) => (
-          <Table.Row key={idx}>
+          <Table.Row key={uuidv4()}>
             <Table.Cell collapsing>{idx + 1}</Table.Cell>
             <Table.Cell>{format(order.createdAt, 'dd/MM/yy')}</Table.Cell>
             <Table.Cell>
               {order.pedido.map((product) => (
-                <span>
+                <span key={uuidv4()}>
                   {`✔ ${product.producto} - Catntidad del Producto: ${product.cantidadDelProducto}`}
                   <br />
                 </span>

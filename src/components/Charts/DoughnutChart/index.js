@@ -18,7 +18,6 @@ export default function DoughnutChart({
       labels: legend,
       datasets: [
         {
-          label: '# of Votes',
           data: scores,
           backgroundColor: bgColor,
           borderColor: borderColor,

@@ -1,0 +1,65 @@
+.settings {
+  margin: 50px;
+}
+
+.flexTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--font-grey);
+  border-bottom: 1px solid var(--font-grey);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.buttonTop {
+  background-color: var(--background-grey-light);
+  border-radius: 10px;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 0.2rem 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonTop:hover {
+  background-color: rgba(36, 36, 36, 0.7);
+}
+
+.flexChart {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.totals {
+  font-size: 1.2rem;
+}
+
+.totals span {
+  color: #fff;
+  font-weight: bold;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.button {
+  background-color: var(--background-dark);
+  border-radius: 10px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  padding: 0.2rem 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: var(--background-grey-light);
+}

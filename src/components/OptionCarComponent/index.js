@@ -7,6 +7,7 @@ import DeleteCategory from '../CategoriesPage/components/DeleteCategory'
 import ChangeCostShipping from '../ShippingPage/components/ChangeCostShipping'
 import StatisticsSell from '../StatisticsSell'
 import StatisticsClients from '../StatisticsClients'
+import StatisticsProducts from '../StatisticsProducts'
 import style from './OptionCar.module.css'
 
 export default function OptionCarComponent({ option, setComponent }) {
@@ -22,6 +23,7 @@ export default function OptionCarComponent({ option, setComponent }) {
     '6 a 10 km': <ChangeCostShipping title={'6 a 10km'} />,
     Ventas: <StatisticsSell />,
     Clientes: <StatisticsClients />,
+    Productos: <StatisticsProducts />,
     // 'Top productos': 'top-products',
     // 'Top clientes': 'top-clients',
     // 'Total ventas': 'total-sells',

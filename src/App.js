@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import RestaurantsState from './context/restaurants/RestaurantsState'
 import ProductsState from './context/products/ProductsState'
 import OrdersState from './context/orders/OrdersState'
+import UsersState from './context/users/UsersState'
 import useAuth from './hooks/useAuth'
 import Auth from './components/Auth'
 import { privateRoutes } from './routes'
@@ -18,18 +19,20 @@ export default function App() {
     <RestaurantsState>
       <ProductsState>
         <OrdersState>
-          {user ? <RouterProvider router={privateRoutes} /> : <Auth />}
-          <ToastContainer
-            position='top-right'
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnVisibilityChange
-            draggable
-            pauseOnHover={false}
-          />
+          <UsersState>
+            {user ? <RouterProvider router={privateRoutes} /> : <Auth />}
+            <ToastContainer
+              position='top-right'
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnVisibilityChange
+              draggable
+              pauseOnHover={false}
+            />
+          </UsersState>
         </OrdersState>
       </ProductsState>
     </RestaurantsState>

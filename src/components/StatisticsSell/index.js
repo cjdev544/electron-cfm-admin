@@ -65,7 +65,7 @@ export default function StatisticsSell() {
           ))}
         {yearSelected && !showMonths && (
           <div className={style.buttonTop} onClick={() => setShowMonths(true)}>
-            Ver meces
+            Ver meses
           </div>
         )}
       </div>

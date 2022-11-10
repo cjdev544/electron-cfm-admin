@@ -29,9 +29,6 @@ export default function useProductSelect(setSelectedProduct) {
       setProductsList(
         products?.filter((product) => product.restaurante === restaurantOptions)
       )
-
-      // setCategorySelected(null)
-      // setSelectedProduct(null)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restaurantOptions, restaurants, products])
@@ -54,7 +51,7 @@ export default function useProductSelect(setSelectedProduct) {
   }, [categorySelected, productsList])
 
   const allRestaurants = restaurants?.map((rest) => ({
-    key: rest?.position,
+    key: rest?.id,
     value: rest?.page,
     text: rest?.name,
   }))

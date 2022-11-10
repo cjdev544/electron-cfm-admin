@@ -75,7 +75,7 @@ ipcMain.on('print', (_e, args) => {
 
 ipcMain.on('sendMessage', (_e, args) => {
   const payload = { path: args }
-  const token = jwt.sign(payload, 'token secret sing here', {
+  const token = jwt.sign(payload, 'secret sing token here', {
     expiresIn: 300,
   })
 

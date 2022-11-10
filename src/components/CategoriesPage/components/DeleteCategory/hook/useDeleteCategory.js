@@ -49,7 +49,7 @@ export default function useDeleteCategory() {
   }, [restaurante, restaurants])
 
   const allRestaurants = restaurants?.map((rest) => ({
-    key: rest?.position,
+    key: rest?.id,
     value: rest?.page,
     text: rest?.name,
   }))

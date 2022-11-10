@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 
-import { rebuildClientApp } from '../../helpers/rebuildClientApp'
 import useOrders from '../../hooks/useOrders'
 import OrderList from '../OrdersList'
 import style from './Home.module.css'
@@ -15,6 +14,7 @@ export default function HomePage() {
       (order) =>
         format(order.createdAt, 'dd/MM/yy') === format(Date.now(), 'dd/MM/yy')
     )
+
     setAllOrdersToday(ordersToDay)
   }, [orders])
 
@@ -23,9 +23,6 @@ export default function HomePage() {
       <h1>
         Pedidos del día <span>{allOrdersToday?.length}</span>
       </h1>
-      <button onClick={() => rebuildClientApp('/elpathParaRebuild')}>
-        Mandar Path
-      </button>
       <OrderList orders={allOrdersToday} />
     </div>
   )

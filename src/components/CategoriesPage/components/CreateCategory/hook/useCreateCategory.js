@@ -36,7 +36,7 @@ export default function useCreateCategory() {
   }, [restaurantSelected, restaurants])
 
   const allRestaurants = restaurants?.map((rest) => ({
-    key: rest?.position,
+    key: rest?.id,
     value: rest?.page,
     text: rest?.name,
   }))

@@ -24,13 +24,6 @@ export default function OptionCarComponent({ option, setComponent }) {
     Ventas: <StatisticsSell />,
     Clientes: <StatisticsClients />,
     Productos: <StatisticsProducts />,
-    // 'Top productos': 'top-products',
-    // 'Top clientes': 'top-clients',
-    // 'Total ventas': 'total-sells',
-    // 'Crear cupon': 'new-coupon',
-    // 'Cambiar cupon': 'change-coupon',
-    // 'Eliminar cupon': 'delete-coupon',
-    // 'Primera compra': 'first-buy',
   }
 
   const handleClick = () => {

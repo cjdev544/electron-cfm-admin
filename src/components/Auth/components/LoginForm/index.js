@@ -29,7 +29,6 @@ export default function LoginForm() {
         )
         break
       default:
-        console.log(code)
         toast.error('Error al iniciar sesión')
         break
     }

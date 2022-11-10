@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 
 import useProducts from '../../../hooks/useProducts'
 import useHomePage from '../../../hooks/useHomePage'
+import { rebuildClientApp } from '../../../helpers/rebuildClientApp'
 
 export default function useHomeAdminPage() {
   const navigate = useNavigate()
@@ -67,6 +68,7 @@ export default function useHomeAdminPage() {
       }
       await updateHomepage(dataSection.id, dataForm)
       setIsLoading(false)
+      rebuildClientApp('/')
       navigate('/settings')
     } else {
       if (!sectionTitle) {
@@ -79,6 +81,7 @@ export default function useHomeAdminPage() {
       }
       await updateHomepage(dataSection.id, dataForm)
       setIsLoading(false)
+      rebuildClientApp('/')
       navigate('/settings')
     }
   }

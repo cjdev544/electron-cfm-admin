@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { rebuildClientApp } from '../../../../../helpers/rebuildClientApp'
 import useRestaurants from '../../../../../hooks/useRestaurants'
 import useProducts from '../../../../../hooks/useProducts'
 
@@ -130,18 +131,26 @@ export default function useUpdateCategory() {
     )
     setRestaurants(restaurantsWithChange)
 
-    const changeCategoryInProducts = products.filter(
+    const restaurantProducts = products.filter(
+      (product) => product.restaurante === restaurante
+    )
+
+    const changeCategoryInProducts = restaurantProducts.filter(
       (product) => product.categoria === categoria
     )
     for await (const element of changeCategoryInProducts) {
-      const productChangeCategory = { ...element, categoria: nombre }
-      updateProduct(productChangeCategory, capitalizeCategory)
+      const productChangeCategory = {
+        ...element,
+        categoria: capitalizeCategory,
+      }
+      updateProduct(productChangeCategory, null)
     }
 
     const productsChange = await getAllProducts()
     setProducts(productsChange)
 
     setIsLoading(false)
+    rebuildClientApp(`/${restaurante}`)
     navigate('/settings')
   }
 

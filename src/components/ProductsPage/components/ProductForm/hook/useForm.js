@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { toast } from 'react-toastify'
 
+import { rebuildClientApp } from '../../../../../helpers/rebuildClientApp'
+import useHomePage from '../../../../../hooks/useHomePage'
 import useRestaurants from '../../../../../hooks/useRestaurants'
 import useProducts from '../../../../../hooks/useProducts'
 
@@ -10,6 +12,7 @@ export default function useForm(product) {
   const navigate = useNavigate()
   const { restaurants } = useRestaurants()
   const { products, setProducts, addNewProduct, updateProduct } = useProducts()
+  const { dataHome } = useHomePage()
 
   const initialState = {
     restaurante: product?.restaurante || '',
@@ -60,7 +63,7 @@ export default function useForm(product) {
   }, [restaurante, restaurants])
 
   const allRestaurants = restaurants?.map((rest) => ({
-    key: rest?.position,
+    key: rest?.id,
     value: rest?.page,
     text: rest?.name,
   }))
@@ -118,6 +121,24 @@ export default function useForm(product) {
     multiple: false,
     onDrop,
   })
+
+  const rebuildPages = (option) => {
+    if (option === 'newProduct') {
+      rebuildClientApp(`/${formData.restaurante}`)
+    } else {
+      const isProductInHome = dataHome[0].productsSection.find(
+        (productHome) => productHome === product.id
+      )
+      if (isProductInHome) rebuildClientApp('/')
+
+      if (product.restaurante === formData.restaurante) {
+        rebuildClientApp(`/${formData.restaurante}`)
+      } else {
+        rebuildClientApp(`/${formData.restaurante}`)
+        rebuildClientApp(`/${product.restaurante}`)
+      }
+    }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -196,6 +217,7 @@ export default function useForm(product) {
       const newProduct = addNewProduct(formData, file)
       setIsLoading(false)
       if (newProduct) setProducts([...products, newProduct])
+      rebuildPages('newProduct')
       navigate('/settings')
     } else {
       const productUpdate = updateProduct(formData, file)
@@ -205,6 +227,7 @@ export default function useForm(product) {
             product.id === productUpdate.id ? productUpdate : product
           )
         )
+      rebuildPages('updateProduct')
       navigate('/settings')
       setIsLoading(false)
     }

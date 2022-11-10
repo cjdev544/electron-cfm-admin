@@ -15,8 +15,8 @@ export default function StatisticsProducts() {
     bgColors,
     bordersColors,
     topBuy,
-    getOrdersForYear,
     setShowMonths,
+    getOrdersForYear,
     getOrdersForMont,
   } = useStatisticsProducts()
 

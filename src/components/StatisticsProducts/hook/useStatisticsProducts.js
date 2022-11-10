@@ -92,11 +92,11 @@ export default function useStatisticsProducts() {
       let labels = []
 
       for (const key in ordersForBuyNumber) {
-        const product = products.find((product) => product.id === key)
+        const product = products?.find((product) => product.id === key)
         arr.push({
           ...ordersForBuyNumber[key],
-          name: product.nombre,
-          restaurant: product.restaurante,
+          name: product?.nombre,
+          restaurant: product?.restaurante,
         })
       }
       const arrSortBuy = arr.sort((a, b) => b.buy - a.buy)

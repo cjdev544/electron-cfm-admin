@@ -1,31 +1,29 @@
-const electron = require('electron')
-const { app, ipcMain } = require('electron')
-const BrowserWindow = electron.BrowserWindow
+const { app, BrowserWindow, ipcMain } = require('electron')
 const { PosPrinter } = require('electron-pos-printer')
-
-const path = require('path')
+const { join } = require('path')
 const isDev = require('electron-is-dev')
+const jwt = require('jsonwebtoken')
+const fetch = require('electron-fetch').default
 process.setMaxListeners(Infinity)
 
-let mainWindow
 let printers
+let mainWindow = BrowserWindow || null
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 700,
-    title: 'Gestor de ordenes CF',
-    titleBarStyle: 'hiddenInset',
+    width: 1024,
+    height: 728,
+    // title: 'CFM-Admin',
+    // titleBarStyle: 'hiddenInset',
     webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true,
+      preload: join(__dirname, './preload.js'),
     },
   })
 
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`
+      : `file://${join(__dirname, '../build/index.html')}`
   )
   if (isDev) {
     // Open the DevTools.
@@ -37,7 +35,10 @@ function createWindow() {
   printers = mainWindow.webContents.getPrintersAsync()
 }
 
-app.on('ready', createWindow)
+// app.on('ready', createWindow)
+app.whenReady().then(() => {
+  createWindow()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -51,7 +52,7 @@ app.on('activate', () => {
   }
 })
 
-ipcMain.on('print', (event, args) => {
+ipcMain.on('print', (_e, args) => {
   const data = JSON.parse(args)
 
   let printerName
@@ -70,4 +71,21 @@ ipcMain.on('print', (event, args) => {
     timeOutPerLine: 400,
     silent: true,
   }).catch((err) => console.log(err))
+})
+
+ipcMain.on('sendMessage', (_e, args) => {
+  const payload = { path: args }
+  const token = jwt.sign(payload, 'token secret sing here', {
+    expiresIn: 300,
+  })
+
+  fetch(`http://localhost:8000/api/revalidate`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => console.log(json))
 })

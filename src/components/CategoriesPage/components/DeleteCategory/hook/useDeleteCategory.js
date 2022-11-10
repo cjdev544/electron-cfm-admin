@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { rebuildClientApp } from '../../../../../helpers/rebuildClientApp'
 import useRestaurants from '../../../../../hooks/useRestaurants'
 import useProducts from '../../../../../hooks/useProducts'
 
@@ -103,7 +104,11 @@ export default function useDeleteCategory() {
     )
     setRestaurants(restaurantsWithChange)
 
-    const deleteProductsCategory = products.filter(
+    const restaurantProducts = products.filter(
+      (product) => product.restaurante === restaurante
+    )
+
+    const deleteProductsCategory = restaurantProducts.filter(
       (product) => product.categoria === categoria
     )
     for await (const element of deleteProductsCategory) {
@@ -114,6 +119,8 @@ export default function useDeleteCategory() {
     setProducts(productsChange)
 
     setIsLoading(false)
+    rebuildClientApp('/')
+    rebuildClientApp(`/${restaurante}`)
     navigate('/settings')
   }
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'semantic-ui-react'
 
+import { rebuildClientApp } from '../../helpers/rebuildClientApp'
 import useRestaurants from '../../hooks/useRestaurants'
 import RestItem from './components/RestItem'
 import style from './CloseOneRestaurant.module.css'
@@ -33,6 +34,7 @@ export default function CloseOneRestaurant() {
             if (res) {
               setRestaurants(formData)
             }
+            rebuildClientApp(`/${formData[i].page}`)
             navigate('/settings')
           })
         }

@@ -2,19 +2,33 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 
+import { rebuildClientApp } from '../../../../helpers/rebuildClientApp'
 import useProducts from '../../../../hooks/useProducts'
+import useHomePage from '../../../../hooks/useHomePage'
 import ProductSelect from '../ProductSelect'
 import style from './DeleteProduct.module.css'
 
 export default function DeleteProduct() {
   const navigate = useNavigate()
   const { deleteProduct } = useProducts()
+  const { dataHome } = useHomePage()
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const rebuildPages = () => {
+    const isProductInHome = dataHome[0].productsSection.find(
+      (productHome) => productHome === selectedProduct.id
+    )
+    if (isProductInHome) rebuildClientApp('/')
+    rebuildClientApp(`/${selectedProduct.restaurante}`)
+  }
+
   const handleClick = () => {
     setIsLoading(true)
-    deleteProduct(selectedProduct).finally(() => setIsLoading(false))
+    deleteProduct(selectedProduct).then(() => {
+      rebuildPages()
+    })
+    setIsLoading(false)
     navigate('/settings')
   }
 

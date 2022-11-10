@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { rebuildClientApp } from '../../../../../helpers/rebuildClientApp'
 import useRestaurants from '../../../../../hooks/useRestaurants'
 
 export default function useCreateCategory() {
@@ -94,6 +95,7 @@ export default function useCreateCategory() {
     )
     setRestaurants(restaurantsWithChange)
     setIsLoading(false)
+    rebuildClientApp(`/${restaurantSelected}`)
     navigate('/settings')
   }
 

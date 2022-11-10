@@ -72,7 +72,9 @@ export default function useStatisticsClients() {
       setArrSortAmountWithClient(arrSort)
     }
   }, [arrSortAmount, users])
+
   return {
+    users,
     buyOrAmount,
     arrSortAmountWithClient,
     arrSortBuyWithClient,

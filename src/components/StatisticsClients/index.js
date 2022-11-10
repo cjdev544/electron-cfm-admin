@@ -4,6 +4,7 @@ import style from './StatisticsClients.module.css'
 
 export default function StatisticsClients() {
   const {
+    users,
     buyOrAmount,
     arrSortAmountWithClient,
     arrSortBuyWithClient,
@@ -13,6 +14,7 @@ export default function StatisticsClients() {
   return (
     <div className={style.settings}>
       <h1>Top de los mejores clientes</h1>
+      <h4>{users?.length} Clientes registrados</h4>
       <div
         className={style.buttonTop}
         onClick={() => setBuyOrAmount(!buyOrAmount)}

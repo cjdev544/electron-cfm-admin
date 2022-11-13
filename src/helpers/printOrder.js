@@ -1,8 +1,8 @@
+// implement in public/reload
 import { orderInLocal } from './orderInLocal'
 import { orderIsShipping } from './orderIsShipping'
 
-const electron = window.require('electron')
-const { ipcRenderer } = electron
+const { electronAPI } = window
 
 export const printingLocal = (order) => {
   let data
@@ -13,5 +13,5 @@ export const printingLocal = (order) => {
     data = orderInLocal(order)
   }
 
-  ipcRenderer.send('print', JSON.stringify(data))
+  electronAPI.sendMessage('print', JSON.stringify(data))
 }

@@ -1,8 +1,8 @@
 import { round } from 'mathjs'
 import { Button, Form } from 'semantic-ui-react'
 
+import { printingLocal } from '../../helpers/printOrder'
 import useOrderPage from './hook/useOrderPage'
-// import { printingLocal } from '../../helpers/printOrder'
 import CancelForm from './components/CancelForm'
 import DeliveryOrLocal from './components/DeliveryOrLocal'
 import TimeDelivery from './components/TimeDelivery'
@@ -45,8 +45,7 @@ export default function OrderPage() {
         style={{ backgroundColor: `${colorAlert}` }}
       >
         <div className={style.buttons}>
-          {/* <Button onClick={() => printingLocal(order)}>Imprimir</Button> */}
-          <Button>Imprimir</Button>
+          <Button onClick={() => printingLocal(order)}>Imprimir</Button>
           {!order?.deliveryIn && !order?.cancel ? (
             <Button secondary onClick={() => setFormCancel(true)}>
               Cancelar orden

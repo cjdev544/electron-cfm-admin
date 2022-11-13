@@ -56,21 +56,24 @@ ipcMain.on('print', (_e, args) => {
   const data = JSON.parse(args)
 
   let printerName
-  printers.forEach((printer) => {
-    if (printer?.isDefault) {
-      printerName = printer?.name
-    }
-  })
+  printers.then((res) => {
+    res.forEach((printer) => {
+      if (printer.isDefault) {
+        printerName = printer.name
+      }
+    })
 
-  PosPrinter.print(data, {
-    preview: false, // Preview in window or print
-    width: '250px', //  width of content body
-    margin: '0 0 10px 10px', // margin of content body
-    copies: 1, // Number of copies to print
-    printerName: printerName, // printerName: string, check it at webContent.getPrinters()
-    timeOutPerLine: 400,
-    silent: true,
-  }).catch((err) => console.log(err))
+    console.log({ printerName })
+    PosPrinter.print(data, {
+      preview: false, // Preview in window or print
+      width: '250px', //  width of content body
+      margin: '0 0 10px 10px', // margin of content body
+      copies: 1, // Number of copies to print
+      printerName: printerName, // printerName: string, check it at webContent.getPrinters()
+      timeOutPerLine: 400,
+      silent: true,
+    }).catch((err) => console.log({ err }))
+  })
 })
 
 ipcMain.on('sendMessage', (_e, args) => {

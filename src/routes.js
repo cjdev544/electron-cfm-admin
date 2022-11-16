@@ -10,6 +10,7 @@ import HomeAdmin from './pages/home-admin'
 import ProductsAdmin from './pages/products-admin'
 import CategoriesAdmin from './pages/categories-admin'
 import ShippingAdmin from './pages/shipping-admin'
+import DiscountAdmin from './pages/discount-admin'
 import CloseOneRestaurant from './pages/close-one-restaurant'
 import Order from './pages/order'
 import Statistics from './pages/statistics'
@@ -54,6 +55,10 @@ export const privateRoutes = createBrowserRouter([
   {
     path: '/shipping-admin',
     element: <ShippingAdmin />,
+  },
+  {
+    path: '/discount-admin',
+    element: <DiscountAdmin />,
   },
   {
     path: '/close-one-restaurant',

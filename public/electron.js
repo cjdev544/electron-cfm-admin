@@ -63,7 +63,6 @@ ipcMain.on('print', (_e, args) => {
       }
     })
 
-    console.log({ printerName })
     PosPrinter.print(data, {
       preview: false, // Preview in window or print
       width: '250px', //  width of content body

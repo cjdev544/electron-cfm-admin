@@ -1,5 +1,5 @@
-import { toast } from 'react-toastify'
 import { collection, doc, getDocs, query, updateDoc } from 'firebase/firestore'
+import { toast } from 'react-toastify'
 
 import { db } from '../firebase/config'
 

@@ -34,97 +34,103 @@ export default function ShowAllDiscounts() {
       {discAll?.length && (
         <>
           <h3>Cupones aplicados a todos los restaurantes</h3>
-          {discAll.map((disc) => (
-            <div key={disc.id}>
-              <p>
-                Nombre: <span>{disc.name}</span>
-              </p>
-              <p>
-                Descuento: <span>{` ${disc.discount}%`}</span>
-              </p>
-              {disc.type === 'date' && (
+          <div className={style.flex}>
+            {discAll.map((disc) => (
+              <div key={disc.id} className={style.item}>
                 <p>
-                  Valido hasta: <span>{disc.dateFormat}</span>
+                  Nombre: <span>{disc.name}</span>
                 </p>
-              )}
-              {disc.type === 'use' && (
-                <>
+                <p>
+                  Descuento: <span>{` ${disc.discount}%`}</span>
+                </p>
+                {disc.type === 'date' && (
                   <p>
-                    Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    Valido hasta: <span>{disc.dateFormat}</span>
                   </p>
-                  <p>
-                    Restan: <span>25</span>
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
+                )}
+                {disc.type === 'use' && (
+                  <>
+                    <p>
+                      Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    </p>
+                    <p>
+                      Restan: <span>25</span>
+                    </p>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </>
       )}
       {discOne?.length && (
         <>
           <h3>Cupones aplicados a un restaurante especifico</h3>
-          {discOne.map((disc) => (
-            <div key={disc.id}>
-              <p>
-                Nombre: <span>{disc.name}</span>
-              </p>
-              <p>
-                Descuento: <span>{` ${disc.discount}%`}</span>
-              </p>
-              <p>
-                Restaurante: <span>{disc.restaurant}</span>
-              </p>
-              {disc.type === 'date' && (
+          <div className={style.flex}>
+            {discOne.map((disc) => (
+              <div key={disc.id} className={style.item}>
                 <p>
-                  Valido hasta: <span>{disc.dateFormat}</span>
+                  Nombre: <span>{disc.name}</span>
                 </p>
-              )}
-              {disc.type === 'use' && (
-                <>
+                <p>
+                  Descuento: <span>{` ${disc.discount}%`}</span>
+                </p>
+                <p>
+                  Restaurante: <span>{disc.restaurant}</span>
+                </p>
+                {disc.type === 'date' && (
                   <p>
-                    Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    Valido hasta: <span>{disc.dateFormat}</span>
                   </p>
-                  <p>
-                    Restan: <span>25</span>
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
+                )}
+                {disc.type === 'use' && (
+                  <>
+                    <p>
+                      Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    </p>
+                    <p>
+                      Restan: <span>25</span>
+                    </p>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </>
       )}
       {discClient?.length && (
         <>
           <h3>Cupones aplicados a clientes especificos</h3>
-          {discClient.map((disc) => (
-            <div key={disc.id}>
-              <p>
-                Nombre: <span>{disc.name}</span>
-              </p>
-              <p>
-                Descuento: <span>{` ${disc.discount}%`}</span>
-              </p>
-              <p>
-                Cliente: <span>{disc.clientEmail}</span>
-              </p>
-              {disc.type === 'date' && (
+          <div className={style.flex}>
+            {discClient.map((disc) => (
+              <div key={disc.id} className={style.item}>
                 <p>
-                  Valido hasta: <span>{disc.dateFormat}</span>
+                  Nombre: <span>{disc.name}</span>
                 </p>
-              )}
-              {disc.type === 'use' && (
-                <>
+                <p>
+                  Descuento: <span>{` ${disc.discount}%`}</span>
+                </p>
+                <p>
+                  Cliente: <span>{disc.clientEmail}</span>
+                </p>
+                {disc.type === 'date' && (
                   <p>
-                    Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    Valido hasta: <span>{disc.dateFormat}</span>
                   </p>
-                  <p>
-                    Restan: <span>25</span>
-                  </p>
-                </>
-              )}
-            </div>
-          ))}
+                )}
+                {disc.type === 'use' && (
+                  <>
+                    <p>
+                      Se puede utilizar: <span>{disc.expNumber} veces</span>
+                    </p>
+                    <p>
+                      Restan: <span>25</span>
+                    </p>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
         </>
       )}
     </div>

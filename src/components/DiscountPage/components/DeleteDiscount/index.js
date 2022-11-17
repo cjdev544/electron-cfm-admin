@@ -21,17 +21,19 @@ export default function DeleteDiscount() {
   return (
     <div className={style.container}>
       <h1>Eliminar cupones</h1>
-      {discounts?.length &&
-        discounts.map((disc) => (
-          <div key={disc.id} className={style.item}>
-            <p>
-              Nombre: <span>{disc.name}</span>
-            </p>
-            <Button onClick={() => handleClick(disc.id)} loading={isLoading}>
-              Eliminar cupon
-            </Button>
-          </div>
-        ))}
+      <div className={style.flex}>
+        {discounts?.length &&
+          discounts.map((disc) => (
+            <div key={disc.id} className={style.item}>
+              <p>
+                Nombre: <span>{disc.name}</span>
+              </p>
+              <Button onClick={() => handleClick(disc.id)} loading={isLoading}>
+                Eliminar cupon
+              </Button>
+            </div>
+          ))}
+      </div>
     </div>
   )
 }

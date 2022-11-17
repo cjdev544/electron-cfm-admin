@@ -2,20 +2,23 @@
   margin: 50px;
 }
 
-.item {
+.flex {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  margin-bottom: 2rem;
 }
 
-.item p {
-  font-size: 1.5rem;
-  margin: 0;
+.item {
+  background-color: var(--background-dark);
+  border-radius: 10px;
+  border: 2px solid #fff;
+  font-size: 1.2rem;
+  padding: 1rem;
+  text-align: center;
 }
 
 .item span {
   color: #fff;
-  margin-left: 1rem;
 }

@@ -5,6 +5,8 @@ import CreateCategory from '../CategoriesPage/components/CreateCategory'
 import UpdateCategory from '../CategoriesPage/components/UpdateCategory'
 import DeleteCategory from '../CategoriesPage/components/DeleteCategory'
 import CreateDiscount from '../DiscountPage/components/CreateDiscount'
+import ShowAllDiscounts from '../DiscountPage/components/ShowAllDiscounts'
+import DeleteDiscount from '../DiscountPage/components/DeleteDiscount'
 import ChangeCostShipping from '../ShippingPage/components/ChangeCostShipping'
 import StatisticsSell from '../StatisticsSell'
 import StatisticsClients from '../StatisticsClients'
@@ -20,6 +22,8 @@ export default function OptionCarComponent({ option, setComponent }) {
     'Cambiar categoría': <UpdateCategory />,
     'Eliminar categoría': <DeleteCategory />,
     'Crear cupon': <CreateDiscount />,
+    'Cupones activos': <ShowAllDiscounts />,
+    'Eliminar cupon': <DeleteDiscount />,
     '0 a 2 km': <ChangeCostShipping title={'0 a 2km'} />,
     '2 a 6 km': <ChangeCostShipping title={'2 a 6km'} />,
     '6 a 10 km': <ChangeCostShipping title={'6 a 10km'} />,

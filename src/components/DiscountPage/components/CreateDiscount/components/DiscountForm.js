@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
 import DatePicker, { setDefaultLocale } from 'react-datepicker'
+import { format } from 'date-fns'
 import { toast } from 'react-toastify'
 import es from 'date-fns/locale/es'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -30,6 +31,11 @@ export default function DiscountForm({ formData, setFormData }) {
   } = formData
 
   const [isLoading, setIsLoading] = useState(false)
+
+  const createDate = (date) => {
+    const dateFormat = format(date, 'dd/MM/y')
+    setFormData({ ...formData, expDate: date, dateFormat })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -113,7 +119,7 @@ export default function DiscountForm({ formData, setFormData }) {
         <DatePicker
           dateFormat='dd/MM/yy'
           selected={expDate}
-          onChange={(date) => setFormData({ ...formData, expDate: date })}
+          onChange={(date) => createDate(date)}
           minDate={new Date()}
           mini
         />

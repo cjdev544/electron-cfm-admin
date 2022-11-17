@@ -41,7 +41,7 @@ export default function useCreateCategory() {
     text: rest?.name,
   }))
 
-  const handleRestaurantSelect = (e, option) => {
+  const handleRestaurantSelect = (_e, option) => {
     setRestaurantSelected(option.value)
     const restaurant = restaurants.filter(
       (restaurant) => restaurant.page === option.value

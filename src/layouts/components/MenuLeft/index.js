@@ -1,9 +1,17 @@
 import { NavLink } from 'react-router-dom'
-import { Menu, Icon } from 'semantic-ui-react'
+import { Menu, Icon, Image } from 'semantic-ui-react'
+
+import Logo from '../../../assets/png/logo.png'
 
 export default function MenuLeft() {
   return (
     <Menu className='menu-left' vertical>
+      <div className='logo'>
+        <Image src={Logo} width={100} alt='Logo' />
+        <h5>
+          Administrador y gestor de pedidos <span>CentralFood Málaga</span>
+        </h5>
+      </div>
       <div className='top'>
         <Menu.Item as={NavLink} to='/' end>
           <Icon name='home' />

@@ -120,7 +120,7 @@ export default function DiscountForm({ formData, setFormData }) {
           dateFormat='dd/MM/yy'
           selected={expDate}
           onChange={(date) => createDate(date)}
-          minDate={new Date()}
+          //minDate={new Date()}
           mini
         />
       )}

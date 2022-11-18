@@ -17,11 +17,11 @@ export default function useDiscount() {
     if (discounts?.length) {
       discounts.forEach((discount) => {
         if (discount.type === 'date') {
-          if (discount.expDate < new Date.now()) {
+          if (Number(`${discount.expDate.seconds}000`) < Date.now()) {
             deleteDiscount(discount.id, null)
           }
         } else {
-          if (discount.espNumber === discount.use) {
+          if (discount.expNumber === discount.use) {
             deleteDiscount(discount.id, null)
           }
         }

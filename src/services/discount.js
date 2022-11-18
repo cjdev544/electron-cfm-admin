@@ -37,11 +37,11 @@ export const deleteDiscountServices = async (discountId, setIsLoading) => {
   deleteDoc(doc(db, 'discount', discountId))
     .then(() => {
       toast.success('Cupon eliminado correctamente')
-      setIsLoading(false)
+      if (setIsLoading) setIsLoading(false)
     })
     .catch((err) => {
       console.log(err)
       toast.error('Error al eliminar el cupon')
-      setIsLoading(false)
+      if (setIsLoading) setIsLoading(false)
     })
 }

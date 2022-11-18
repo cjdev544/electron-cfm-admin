@@ -13,6 +13,22 @@ export default function useDiscount() {
     getDiscounts()
   }, [])
 
+  useEffect(() => {
+    if (discounts?.length) {
+      discounts.forEach((discount) => {
+        if (discount.type === 'date') {
+          if (discount.expDate < new Date.now()) {
+            deleteDiscount(discount.id, null)
+          }
+        } else {
+          if (discount.espNumber === discount.use) {
+            deleteDiscount(discount.id, null)
+          }
+        }
+      })
+    }
+  }, [discounts])
+
   const createDiscount = (discountData, setIsLoading) =>
     createDiscountServices(discountData, setIsLoading)
 

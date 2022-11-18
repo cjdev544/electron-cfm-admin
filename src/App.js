@@ -9,11 +9,13 @@ import ProductsState from './context/products/ProductsState'
 import OrdersState from './context/orders/OrdersState'
 import UsersState from './context/users/UsersState'
 import useAuth from './hooks/useAuth'
+import useDiscount from './hooks/useDiscount'
 import Auth from './components/Auth'
 import { privateRoutes } from './routes'
 
 export default function App() {
   const { user } = useAuth()
+  useDiscount()
 
   return (
     <RestaurantsState>

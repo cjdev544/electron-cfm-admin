@@ -7,7 +7,6 @@ export default function ShowAllDiscounts() {
   const { discounts } = useDiscount()
 
   const [discAll, setDiscAll] = useState(null)
-  const [discOne, setDiscOne] = useState(null)
   const [discClient, setDiscClient] = useState(null)
 
   useEffect(() => {
@@ -15,13 +14,9 @@ export default function ShowAllDiscounts() {
       const allRestaurants = discounts.filter(
         (disc) => disc.discountFor === 'all'
       )
-      const oneRestaurant = discounts.filter(
-        (disc) => disc.discountFor === 'one'
-      )
       const client = discounts.filter((disc) => disc.discountFor === 'client')
 
       setDiscAll(allRestaurants)
-      setDiscOne(oneRestaurant)
       setDiscClient(client)
     }
   }, [discounts])
@@ -44,52 +39,22 @@ export default function ShowAllDiscounts() {
                   Descuento: <span>{` ${disc.discount}%`}</span>
                 </p>
                 {disc.type === 'date' && (
-                  <p>
-                    Valido hasta: <span>{disc.dateFormat}</span>
-                  </p>
-                )}
-                {disc.type === 'use' && (
                   <>
                     <p>
-                      Se puede utilizar: <span>{disc.expNumber} veces</span>
+                      Valido hasta: <span>{disc.dateFormat}</span>
                     </p>
                     <p>
-                      Restan: <span>25</span>
+                      Ha sido utilizado: <span>{disc.use}</span>
                     </p>
                   </>
                 )}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-      {discOne?.length && (
-        <>
-          <h3>Cupones aplicados a un restaurante especifico</h3>
-          <div className={style.flex}>
-            {discOne.map((disc) => (
-              <div key={disc.id} className={style.item}>
-                <p>
-                  Nombre: <span>{disc.name}</span>
-                </p>
-                <p>
-                  Descuento: <span>{` ${disc.discount}%`}</span>
-                </p>
-                <p>
-                  Restaurante: <span>{disc.restaurant}</span>
-                </p>
-                {disc.type === 'date' && (
-                  <p>
-                    Valido hasta: <span>{disc.dateFormat}</span>
-                  </p>
-                )}
                 {disc.type === 'use' && (
                   <>
                     <p>
-                      Se puede utilizar: <span>{disc.expNumber} veces</span>
+                      Se puede utilizar: <span>{disc.expNumber}</span>
                     </p>
                     <p>
-                      Restan: <span>25</span>
+                      Restan: <span>{disc.expNumber - disc.use}</span>
                     </p>
                   </>
                 )}

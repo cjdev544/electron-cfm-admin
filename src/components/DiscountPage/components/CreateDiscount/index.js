@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { Form } from 'semantic-ui-react'
 
-import useRestaurants from '../../../../hooks/useRestaurants'
 import useUsers from '../../../../hooks/useUsers'
 import DiscountForm from './components/DiscountForm'
 import style from './CreateDiscount.module.css'
 
 export default function CreateDiscount() {
-  const { restaurants } = useRestaurants()
   const { users } = useUsers()
 
   const [formData, setFormData] = useState({
@@ -17,24 +15,16 @@ export default function CreateDiscount() {
     type: null,
     expDate: new Date(),
     expNumber: null,
-    restaurant: null,
     clientEmail: null,
+    use: 0,
   })
-  const { discountFor, restaurant, clientEmail } = formData
-
-  const allRestaurants = restaurants?.map((rest) => ({
-    key: rest?.id,
-    value: rest?.page,
-    text: rest?.name,
-  }))
+  const { discountFor, clientEmail } = formData
 
   const optionUsers = users?.map((user) => ({
     key: user.email,
     text: user.email,
     value: user.email,
   }))
-
-  if (!restaurants) return null
 
   return (
     <div className={style.container}>
@@ -54,17 +44,6 @@ export default function CreateDiscount() {
         <div
           className={style.button}
           style={
-            discountFor === 'one'
-              ? { borderColor: '#1db954', color: '#1db954' }
-              : { color: '#fff' }
-          }
-          onClick={() => setFormData({ ...formData, discountFor: 'one' })}
-        >
-          Un solo restaurante
-        </div>
-        <div
-          className={style.button}
-          style={
             discountFor === 'client'
               ? { borderColor: '#1db954', color: '#1db954' }
               : { color: '#fff' }
@@ -76,23 +55,6 @@ export default function CreateDiscount() {
       </div>
       {discountFor === 'all' && (
         <DiscountForm formData={formData} setFormData={setFormData} />
-      )}
-      {discountFor === 'one' && (
-        <>
-          <Form className='createAndChangeProduct'>
-            <Form.Select
-              label='Selecciona el restaurante'
-              placeholder='Restaurante'
-              options={allRestaurants}
-              onChange={(_e, option) =>
-                setFormData({ ...formData, restaurant: option.value })
-              }
-            />
-          </Form>
-          {restaurant && (
-            <DiscountForm formData={formData} setFormData={setFormData} />
-          )}
-        </>
       )}
       {discountFor === 'client' && (
         <>

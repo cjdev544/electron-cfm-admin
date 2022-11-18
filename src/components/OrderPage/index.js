@@ -104,6 +104,28 @@ export default function OrderPage() {
             </p>
           </div>
         ))}
+        <div className={style.costDelivery}>
+          <p>
+            <span>Total productos:</span>
+          </p>
+          <p>{order.sinDescuento}€</p>
+        </div>
+        {order?.descuento?.nombre && (
+          <>
+            <div className={style.costDelivery}>
+              <p>
+                <span>Cupon {order.descuento.nombre}:</span>
+              </p>
+              <p>{order.descuento.cost}%</p>
+            </div>
+            <div className={style.costDelivery}>
+              <p>
+                <span>Descuento aplicado:</span>
+              </p>
+              <p>{order.totalProductos}€</p>
+            </div>
+          </>
+        )}
       </div>
       <p className={style.costDelivery}>Costo de envio: {order.costoEnvio}€</p>
       <div className={style.total}>

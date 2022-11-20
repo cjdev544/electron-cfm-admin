@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 
 import Home from './pages/home'
 import NewOrders from './pages/neworders'
@@ -15,7 +15,7 @@ import CloseOneRestaurant from './pages/close-one-restaurant'
 import Order from './pages/order'
 import Statistics from './pages/statistics'
 
-export const privateRoutes = createBrowserRouter([
+export const privateRoutes = createHashRouter([
   {
     path: '/',
     element: <Home />,

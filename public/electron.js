@@ -7,14 +7,15 @@ const fetch = require('electron-fetch').default
 process.setMaxListeners(Infinity)
 
 let printers
-let mainWindow = BrowserWindow || null
+let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    frame: false,
     width: 1024,
     height: 728,
-    // title: 'CFM-Admin',
-    // titleBarStyle: 'hiddenInset',
+    title: 'Administrador - CentralFood Málaga',
+    titleBarStyle: 'hiddenInset',
     webPreferences: {
       preload: join(__dirname, './preload.js'),
     },
@@ -35,7 +36,6 @@ function createWindow() {
   printers = mainWindow.webContents.getPrintersAsync()
 }
 
-// app.on('ready', createWindow)
 app.whenReady().then(() => {
   createWindow()
 })

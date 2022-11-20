@@ -57,5 +57,15 @@
     "electron": "21.2.0",
     "electron-builder": "23.6.0",
     "wait-on": "6.0.1"
+  },
+  "build": {
+    "appId": "com.cjdev544.orderscf",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }

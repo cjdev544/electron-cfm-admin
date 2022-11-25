@@ -11,7 +11,6 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    frame: false,
     width: 1024,
     height: 728,
     title: 'Administrador - CentralFood Málaga',
@@ -78,10 +77,10 @@ ipcMain.on('print', (_e, args) => {
 ipcMain.on('sendMessage', (_e, args) => {
   const payload = { path: args }
   const token = jwt.sign(payload, 'secret sing token here', {
-    expiresIn: 300,
+    expiresIn: '1d',
   })
 
-  fetch(`http://localhost:8000/api/revalidate`, {
+  fetch(`https://new-centralfood.vercel.app/api/revalidate`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

@@ -1,3 +1,5 @@
+import { round } from 'mathjs'
+
 import useStatisticsSell from './hook/useStatisticsSell'
 import { MONTHS } from '../../helpers/getLabels'
 import LineChart from '../Charts/LineChart'
@@ -102,12 +104,12 @@ export default function StatisticsSell() {
               <span>Total en ventas:</span> {totalAmount}€
             </p>
             <p>
-              <span>Pagos con targeta:</span> {dataWithCar[0]} -{' '}
-              {dataWithCar[1]}€
+              <span>Pagos con tarjeta:</span> {dataWithCar[0]} -{' '}
+              {round(dataWithCar[1], 2)}€
             </p>
             <p>
               <span>Pagos con efectivo:</span> {dataWithCash[0]} -{' '}
-              {dataWithCash[1]}€
+              {round(dataWithCash[1], 2)}€
             </p>
           </div>
         </div>

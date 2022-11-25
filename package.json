@@ -1,6 +1,6 @@
 {
   "name": "ordenes_cf",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "public/electron.js",
   "author": "Jefferson Campos <CjDev544 />",
   "homepage": "./",

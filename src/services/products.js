@@ -43,6 +43,7 @@ export const addNewProductServices = async (formData, file) => {
       ...formData,
       nombre: lowerName[0].toUpperCase() + lowerName.slice(1),
       image: imageUrl,
+      id: productId,
     })
     toast.success('Producto creado correctamente')
     return {

@@ -13,6 +13,61 @@ export default function useStatisticsClients() {
   const [arrSortAmount, setArrSortAmount] = useState([])
   const [arrSortAmountWithClient, setArrSortAmountWithClient] = useState([])
   const [buyOrAmount, setBuyOrAmount] = useState(true)
+  const [optionUsers, setOptionUsers] = useState([])
+  const [searchClient, setSearchClient] = useState('')
+  const [ordersSearchClient, setOrdersSearchClient] = useState([])
+
+  useEffect(() => {
+    if (users?.length) {
+      const optionUsers = users?.map((user) => ({
+        key: user.uid,
+        text: user.username,
+        value: user.uid,
+      }))
+      setOptionUsers(optionUsers)
+    }
+  }, [users])
+
+  useEffect(() => {
+    if (searchClient) {
+      let buyUser = {}
+      const client = users?.find((user) => user.id === searchClient)
+      const ordersClient = allOrders.filter((order) => {
+        if (order.usuario === searchClient) return order
+      })
+
+      ordersClient.forEach((order) => {
+        if (buyUser.buy) {
+          buyUser.buy += 1
+          buyUser.totalAmount = round(
+            buyUser.totalAmount + order.totalCompra,
+            2
+          )
+          buyUser.orders = [
+            ...buyUser.orders,
+            { createdAt: order.createdAt, pedido: order.pedido },
+          ]
+        } else {
+          buyUser = {
+            uid: searchClient,
+            buy: 1,
+            totalAmount: order.totalCompra,
+            orders: [{ createdAt: order.createdAt, pedido: order.pedido }],
+            username: client.username,
+            email: client.email,
+          }
+        }
+      })
+      if (!ordersClient?.length) {
+        setOrdersSearchClient({
+          username: client.username,
+          email: client.email,
+        })
+      } else {
+        setOrdersSearchClient(buyUser)
+      }
+    }
+  }, [searchClient, allOrders, users])
 
   useEffect(() => {
     let buyUser = []
@@ -47,8 +102,8 @@ export default function useStatisticsClients() {
     }
     const arrSortBuy = arr.sort((a, b) => b.buy - a.buy)
     const arrSortAmount = arr.sort((a, b) => b.totalAmount - a.totalAmount)
-    setArrSortBuy(arrSortBuy.slice(0, 49))
-    setArrSortAmount(arrSortAmount.slice(0, 49))
+    setArrSortBuy(arrSortBuy.slice(0, 99))
+    setArrSortAmount(arrSortAmount.slice(0, 99))
   }, [clientBuyAndAmount])
 
   useEffect(() => {
@@ -75,9 +130,13 @@ export default function useStatisticsClients() {
 
   return {
     users,
+    optionUsers,
     buyOrAmount,
     arrSortAmountWithClient,
     arrSortBuyWithClient,
+    searchClient,
+    ordersSearchClient,
     setBuyOrAmount,
+    setSearchClient,
   }
 }

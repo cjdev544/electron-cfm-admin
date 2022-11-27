@@ -28,3 +28,7 @@
 .buttonTop:hover {
   background-color: rgba(36, 36, 36, 0.7);
 }
+
+.search {
+  margin-bottom: 2rem;
+}

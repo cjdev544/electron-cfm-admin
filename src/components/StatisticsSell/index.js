@@ -105,11 +105,11 @@ export default function StatisticsSell() {
             </p>
             <p>
               <span>Pagos con tarjeta:</span> {dataWithCar[0]} -{' '}
-              {round(dataWithCar[1], 2)}€
+              {dataWithCar[1] && round(dataWithCar[1], 2)}€
             </p>
             <p>
               <span>Pagos con efectivo:</span> {dataWithCash[0]} -{' '}
-              {round(dataWithCash[1], 2)}€
+              {dataWithCash[1] && round(dataWithCash[1], 2)}€
             </p>
           </div>
         </div>

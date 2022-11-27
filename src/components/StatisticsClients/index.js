@@ -1,14 +1,21 @@
+import { Form } from 'semantic-ui-react'
+
 import useStatisticsClients from './hook/useStatisticsClients'
 import AccordionFluid from './components/AccordionFluid'
+import AccordionSearchClient from './components/AccordionSearchClient'
 import style from './StatisticsClients.module.css'
 
 export default function StatisticsClients() {
   const {
     users,
+    optionUsers,
     buyOrAmount,
     arrSortAmountWithClient,
     arrSortBuyWithClient,
+    searchClient,
+    ordersSearchClient,
     setBuyOrAmount,
+    setSearchClient,
   } = useStatisticsClients()
 
   return (
@@ -23,11 +30,30 @@ export default function StatisticsClients() {
           ? 'Cambiar a mejores clientes por número de compras'
           : 'Cambiar a mejores clientes por Dinero gastado'}
       </div>
-      <div className=''></div>
-      <AccordionFluid
-        buyOrAmount={buyOrAmount}
-        data={buyOrAmount ? arrSortAmountWithClient : arrSortBuyWithClient}
-      />
+      <div className={style.search}>
+        <Form.Dropdown
+          label='Selecciona el usuario por su nombre'
+          placeholder='Nombre del usuario'
+          fluid
+          search
+          selection
+          options={optionUsers}
+          onChange={(_e, option) => setSearchClient(option.value)}
+        />
+      </div>
+      {searchClient ? (
+        <>
+          <div className={style.buttonTop} onClick={() => setSearchClient('')}>
+            Ver todos
+          </div>
+          <AccordionSearchClient data={ordersSearchClient} />
+        </>
+      ) : (
+        <AccordionFluid
+          buyOrAmount={buyOrAmount}
+          data={buyOrAmount ? arrSortAmountWithClient : arrSortBuyWithClient}
+        />
+      )}
     </div>
   )
 }

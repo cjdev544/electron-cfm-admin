@@ -5,7 +5,7 @@ import TableOrders from './TableOrders'
 export default function AccordionFluid({ buyOrAmount, data }) {
   const [activeIndex, setActiveIndex] = useState(null)
 
-  const handleClick = (e, { index }) => {
+  const handleClick = (_e, { index }) => {
     if (activeIndex === index) {
       setActiveIndex(false)
     } else {

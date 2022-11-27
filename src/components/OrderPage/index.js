@@ -26,7 +26,7 @@ export default function OrderPage() {
   } = useOrderPage()
 
   if (!order) return null
-
+  console.log(order)
   if (formCancel) {
     return (
       <CancelForm

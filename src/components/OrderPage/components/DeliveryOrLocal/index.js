@@ -13,11 +13,11 @@ export default function DeliveryOrLocal({ order }) {
       <p>
         <span>Teléfono:</span> {order.phone}
       </p>
-      {order.direccionEnvio !== 'Recogida en el local' ? (
+      {order.direccionEnvio !== 'Recogida el en local' ? (
         <>
           <p>
             <span>Dirección:</span> {order.direccionEnvio.details},{' '}
-            {order.direccionEnvio.zone.address}
+            {order.direccionEnvio?.zone?.address}
           </p>
           <p>
             <span>Codigo postal:</span> {order.direccionEnvio.postalCode}
@@ -25,7 +25,7 @@ export default function DeliveryOrLocal({ order }) {
         </>
       ) : (
         <p>
-          <span>Dirección:</span> Recogida en el local
+          <span>Dirección:</span> Recojida en el local
         </p>
       )}
     </div>

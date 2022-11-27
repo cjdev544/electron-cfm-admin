@@ -193,6 +193,11 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
+        value: `Número de compra: ${order?.numberOrders}<br><hr>`,
+        style: `text-align:left;`,
+      },
+      {
+        type: 'text',
         value: `${date} - ${hour}`,
         style: `text-align:center;`,
         css: { 'font-size': '12px', 'font-family': 'sans-serif' },

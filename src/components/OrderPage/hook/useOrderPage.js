@@ -18,11 +18,21 @@ export default function useOrderPage() {
   const [formCancel, setFormCancel] = useState(false)
   const [cancel, setCancel] = useState(null)
   const [timeAgo, setTimeAgo] = useState(null)
+  const [numberOrders, setNumberOrders] = useState(0)
 
   useEffect(() => {
     const orderSelected = orders?.find((order) => order.id === params.id)
     setOrder(orderSelected)
   }, [orders, params.id])
+
+  useEffect(() => {
+    if (order) {
+      const numberOrders = orders.filter(
+        (orderUser) => orderUser.usuario === order.usuario
+      )
+      setNumberOrders(numberOrders.length)
+    }
+  }, [orders, order])
 
   useEffect(() => {
     if (order?.deliveryIn) {
@@ -95,6 +105,7 @@ export default function useOrderPage() {
     timeDelivery,
     cancel,
     timeAgo,
+    numberOrders,
     setFormCancel,
     setCancel,
     handleCancelOrder,

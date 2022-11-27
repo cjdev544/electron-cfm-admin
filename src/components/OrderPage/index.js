@@ -17,6 +17,7 @@ export default function OrderPage() {
     timeDelivery,
     cancel,
     timeAgo,
+    numberOrders,
     setFormCancel,
     setCancel,
     handleCancelOrder,
@@ -26,7 +27,7 @@ export default function OrderPage() {
   } = useOrderPage()
 
   if (!order) return null
-  console.log(order)
+
   if (formCancel) {
     return (
       <CancelForm
@@ -45,7 +46,9 @@ export default function OrderPage() {
         style={{ backgroundColor: `${colorAlert}` }}
       >
         <div className={style.buttons}>
-          <Button onClick={() => printingLocal(order)}>Imprimir</Button>
+          <Button onClick={() => printingLocal({ ...order, numberOrders })}>
+            Imprimir
+          </Button>
           {!order?.deliveryIn && !order?.cancel ? (
             <Button secondary onClick={() => setFormCancel(true)}>
               Cancelar orden
@@ -59,6 +62,7 @@ export default function OrderPage() {
         <p>
           Pedido: <span>{order.id}</span>
         </p>
+        <p>Número de compra: {numberOrders}</p>
       </div>
       {!order?.idPago ? (
         <div className={style.noPay}>
@@ -79,14 +83,14 @@ export default function OrderPage() {
           Hora de entrega: <span>{order.horaEntrega}</span>
         </p>
       </div>
-      {order.direccionEnvio !== 'Recogida en el local' && (
+      {order.direccionEnvio !== 'Recogida el en local' && (
         <div className={style.delivery}>
           <p>
-            Distancia: <span>{order.direccionEnvio.zone.distance}Km</span>
+            Distancia: <span>{order?.direccionEnvio?.zone?.distance}Km</span>
           </p>
           <p>
             Tiempo aproximado de conducción:{' '}
-            <span>{order.direccionEnvio.zone.duration} Minutos</span>
+            <span>{order?.direccionEnvio?.zone?.duration} Minutos</span>
           </p>
         </div>
       )}

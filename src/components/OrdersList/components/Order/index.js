@@ -56,8 +56,8 @@ export default function Order({ order }) {
           </p>
         </div>
         <div className={style.address}>
-          {order.direccionEnvio === 'Recogida en el local' ? (
-            <p>Recogida en el local</p>
+          {order.direccionEnvio === 'Recogida el en local' ? (
+            <p>Recojida en el local</p>
           ) : (
             <p>Entrega a domicilio</p>
           )}

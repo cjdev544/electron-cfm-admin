@@ -7,7 +7,10 @@ const { electronAPI } = window
 export const printingLocal = (order) => {
   let data
 
-  if (order.direccionEnvio !== 'Recogida en el local') {
+  if (
+    order.direccionEnvio !== 'Recogida el en local' &&
+    order.direccionEnvio !== 'Recogida en el local'
+  ) {
     data = orderIsShipping(order)
   } else {
     data = orderInLocal(order)

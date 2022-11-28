@@ -83,17 +83,18 @@ export default function OrderPage() {
           Hora de entrega: <span>{order.horaEntrega}</span>
         </p>
       </div>
-      {order.direccionEnvio !== 'Recogida el en local' && (
-        <div className={style.delivery}>
-          <p>
-            Distancia: <span>{order?.direccionEnvio?.zone?.distance}Km</span>
-          </p>
-          <p>
-            Tiempo aproximado de conducción:{' '}
-            <span>{order?.direccionEnvio?.zone?.duration} Minutos</span>
-          </p>
-        </div>
-      )}
+      {order.direccionEnvio !== 'Recogida el en local' &&
+        order.direccionEnvio !== 'Recogida en el local' && (
+          <div className={style.delivery}>
+            <p>
+              Distancia: <span>{order?.direccionEnvio?.zone?.distance}Km</span>
+            </p>
+            <p>
+              Tiempo aproximado de conducción:{' '}
+              <span>{order?.direccionEnvio?.zone?.duration} Minutos</span>
+            </p>
+          </div>
+        )}
       <div className={style.body}>
         {order.pedido.map((product) => (
           <div key={product.id} className={style.product}>

@@ -38,7 +38,7 @@ export default function OrderPage() {
       />
     )
   }
-
+  console.log(order)
   return (
     <div className={style.order}>
       <div

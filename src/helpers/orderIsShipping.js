@@ -52,27 +52,25 @@ export const orderIsShipping = (order) => {
       {
         type: 'text',
         value: 'CENTRAL FOOD<br>Málaga<br>',
-        style: `text-align:center;`,
-        css: { 'font-weight': '700', 'font-size': '18px' },
+        style: { fontWeight: '700', textAlign: 'center', fontSize: '18px' },
       },
       {
         type: 'text',
         value:
           'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
-        style: `text-align:center;`,
-        css: { 'font-size': '12px' },
+        style: { textAlign: 'center', fontSize: '12px' },
       },
       {
         type: 'text',
         value: 'PEDIDO NO PAGADO',
-        css: {
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '18px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontFamily: 'sans-serif',
           padding: '10px 0',
-          'text-align': 'center',
+          fontWeight: '700',
+          textAlign: 'center',
+          fontSize: '18px',
         },
       },
       {
@@ -81,114 +79,112 @@ export const orderIsShipping = (order) => {
           Number(order.cash) - order.totalCompra,
           2
         )}€ <hr>`,
-        css: {
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
-          'padding-bottom': '10px',
+          fontFamily: 'sans-serif',
+          paddingBottom: '10px',
+          fontWeight: '700',
+          fontSize: '12px',
         },
       },
       {
         type: 'text',
         value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
-        css: {
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontFamily: 'sans-serif',
           padding: '10px 0',
-          'text-align': 'center',
+          fontWeight: '700',
+          textAlign: 'center',
+          fontSize: '12px',
         },
       },
       {
         type: 'text',
         value: `Orden N°: ${order.id}<hr>`,
-        css: {
-          'font-size': '12px',
-          'font-family': 'sans-serif',
+        style: {
+          fontFamily: 'sans-serif',
           padding: '10px 0',
-          'text-align': 'left',
-          'margin-left': '0',
-        },
-      },
-      {
-        type: 'text',
-        value: 'PEDIDO POR PAGAR',
-        css: {
-          'background-color': '#000',
-          color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
-          padding: '10px 0',
-          'text-align': 'center',
+          textAlign: 'left',
+          marginLeft: '0',
+          fontSize: '12px',
         },
       },
       {
         type: 'table',
-        style: 'border: 1px solid #ddd',
+        // style the table
+        style: { border: '1px solid #ddd' },
+        // list of the columns to be rendered in the table header
         tableHeader: ['PEDIDO', 'COSTO'],
+        // multi dimensional array depicting the rows and columns of the table body
         tableBody: orders,
-        // tableHeaderStyle: "background-color: #000; color: white;",
-        tableHeaderStyle: 'font-size: 16px; font-weight: 700',
-        tableBodyStyle:
-          'border: 0.5px solid #ddd; font-size: 14px; font-weight: 700;',
-      },
-      {
-        type: 'text',
-        value: `<br>`,
+        // list of columns to be rendered in the table footer
+        tableFooter: ['', ''],
+        // custom style for the table header
+        tableHeaderStyle: {
+          backgroundColor: '#000',
+          color: 'white',
+          fontSize: '16px',
+        },
+        // custom style for the table body
+        tableBodyStyle: {
+          border: '0.5px solid #ddd',
+          fontSize: '14px',
+          fontWeight: '700',
+        },
+        // custom style for the table footer
+        tableFooterStyle: { backgroundColor: '#000', color: 'white' },
       },
       {
         type: 'table',
         tableHeader: ['CALCULO TOTAL', ' '],
-        style: 'border: 1px solid #ddd;',
+        style: { border: '1px solid #ddd' },
         tableBody: totalCalculate,
-        // tableHeaderStyle: "background-color: #000; color: white;",
-        tableHeaderStyle: 'font-size: 16px; font-weight: 700',
-        tableBodyStyle: 'border: 0.5px solid #ddd',
+        tableFooter: ['', ''],
+        tableHeaderStyle: { fontSize: '16px', fontWeight: '700' },
+        tableBodyStyle: { border: '0.5px solid #ddd' },
+        tableFooterStyle: { backgroundColor: '#000', color: 'white' },
       },
       {
         type: 'text',
         value: 'DATOS DEL PEDIDO',
-        style: `text-align:center;`,
-        css: {
-          margin: '10px 0',
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontFamily: 'sans-serif',
+          fontWeight: '700',
           padding: '10px 0 5px 0',
-          'text-align': 'center',
+          textAlign: 'center',
+          margin: '10px 0',
+          fontSize: '12px',
         },
       },
       {
         type: 'text',
         value: `CUBIERTOS:    Para ${order?.cubiertosParaPersonas} personas<br>NOTAS:   ${order?.notas}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `NOMBRE: ${order?.direccionEnvio?.name}<br>TELÉFONO: ${order?.direccionEnvio?.phone}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `ID usuario: ${order?.usuario}<br><hr>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `Número de compra: ${order?.numberOrders}<br><hr>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
@@ -202,129 +198,128 @@ export const orderIsShipping = (order) => {
       {
         type: 'text',
         value: 'CENTRAL FOOD<br>Málaga<br>',
-        style: `text-align:center;`,
-        css: { 'font-weight': '700', 'font-size': '18px' },
+        style: { fontWeight: '700', fontSize: '18px', textAlign: 'center' },
       },
       {
         type: 'text',
         value:
           'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
-        style: `text-align:center;`,
-        css: { 'font-size': '12px' },
+        style: { fontSize: '12px', textAlign: 'center' },
       },
       {
         type: 'text',
         value: 'PEDIDO PAGADO',
-        css: {
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '18px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontSize: '18px',
+          fontFamily: 'sans-serif',
+          fontWeight: '700',
           padding: '10px 0',
-          'text-align': 'center',
+          textAlign: 'center',
         },
       },
       {
         type: 'text',
         value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
-        css: {
-          'background-color': '#000',
+        style: {
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
+          fontWeight: '700',
           padding: '10px 0',
-          'text-align': 'center',
+          textAlign: 'center',
         },
       },
       {
         type: 'text',
         value: `Orden N°: ${order.id}<hr>`,
-        css: {
-          'font-size': '12px',
-          'font-family': 'sans-serif',
+        style: {
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
           padding: '10px 0',
-          'text-align': 'left',
-          'margin-left': '0',
-        },
-      },
-      {
-        type: 'text',
-        value: 'PEDIDO PAGADO',
-        css: {
-          'background-color': '#000',
-          color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
-          padding: '10px 0',
-          'text-align': 'center',
+          textAlign: 'left',
+          marginLeft: '0',
         },
       },
       {
         type: 'table',
-        style: 'border: 1px solid #ddd',
+        // style the table
+        style: { border: '1px solid #ddd' },
+        // list of the columns to be rendered in the table header
         tableHeader: ['PEDIDO', 'COSTO'],
+        // multi dimensional array depicting the rows and columns of the table body
         tableBody: orders,
-        // tableHeaderStyle: "background-color: #000; color: white;",
-        tableHeaderStyle: 'font-size: 16px; font-weight: 700',
-        tableBodyStyle:
-          'border: 0.5px solid #ddd; font-size: 14px; font-weight: 700;',
-      },
-      {
-        type: 'text',
-        value: `<br>`,
+        // list of columns to be rendered in the table footer
+        tableFooter: ['', ''],
+        // custom style for the table header
+        tableHeaderStyle: {
+          backgroundColor: '#000',
+          color: 'white',
+          fontSize: '16px',
+        },
+        // custom style for the table body
+        tableBodyStyle: {
+          border: '0.5px solid #ddd',
+          fontSize: '14px',
+          fontWeight: '700',
+        },
+        // custom style for the table footer
+        tableFooterStyle: { backgroundColor: '#000', color: 'white' },
       },
       {
         type: 'table',
         tableHeader: ['CALCULO TOTAL', ' '],
-        style: 'border: 1px solid #ddd;',
+        style: { border: '1px solid #ddd' },
         tableBody: totalCalculate,
-        // tableHeaderStyle: "background-color: #000; color: white;",
-        tableHeaderStyle: 'font-size: 16px; font-weight: 700',
-        tableBodyStyle: 'border: 0.5px solid #ddd',
+        tableFooter: ['', ''],
+        tableHeaderStyle: { fontSize: '16px', fontWeight: '700' },
+        tableBodyStyle: { border: '0.5px solid #ddd' },
+        tableFooterStyle: { backgroundColor: '#000', color: 'white' },
       },
       {
         type: 'text',
         value: 'DATOS DEL PEDIDO',
-        style: `text-align:center;`,
-        css: {
+        style: {
           margin: '10px 0',
-          'background-color': '#000',
+          backgroundColor: '#000',
           color: '#000',
-          'font-size': '12px',
-          'font-family': 'sans-serif',
-          'font-weight': '700',
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
+          fontWeight: '700',
           padding: '10px 0 5px 0',
-          'text-align': 'center',
+          textAlign: 'center',
         },
       },
       {
         type: 'text',
         value: `CUBIERTOS:    Para ${order?.cubiertosParaPersonas} personas<br>NOTAS:   ${order?.notas}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `NOMBRE: ${order?.direccionEnvio?.name}<br>TELÉFONO: ${order?.direccionEnvio?.phone}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `ID usuario: ${order?.usuario}<br><hr>`,
-        style: `text-align:left;`,
+        style: { textAlign: 'left' },
       },
       {
         type: 'text',
         value: `${date} - ${hour}<br>`,
-        style: `text-align:center;`,
-        css: { 'font-size': '12px', 'font-family': 'sans-serif' },
+        style: {
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
+          textAlign: 'center',
+        },
       },
     ]
   }

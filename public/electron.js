@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken')
 const fetch = require('electron-fetch').default
 process.setMaxListeners(Infinity)
 
-let printers
 let mainWindow
+let contents
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -32,7 +32,7 @@ function createWindow() {
   }
   mainWindow.on('closed', () => (mainWindow = null))
 
-  printers = mainWindow.webContents.getPrintersAsync()
+  contents = mainWindow.webContents
 }
 
 app.whenReady().then(() => {
@@ -53,25 +53,26 @@ app.on('activate', () => {
 
 ipcMain.on('print', (_e, args) => {
   const data = JSON.parse(args)
-
   let printerName
-  printers.then((res) => {
-    res.forEach((printer) => {
-      if (printer.isDefault) {
-        printerName = printer.name
+
+  contents
+    .getPrintersAsync()
+    .then((printers) => {
+      printerName = printers?.find((printer) => printer.isDefault)
+
+      if (printerName) {
+        PosPrinter.print(data, {
+          preview: false, // Preview in window or print
+          width: '250px', //  width of content body
+          margin: '0 0 10px 10px', // margin of content body
+          copies: 1, // Number of copies to print
+          printerName: printerName.name, // printerName: string, check it at webContent.getPrinters()
+          timeOutPerLine: 5000,
+          silent: true,
+        }).catch((error) => console.log({ error }))
       }
     })
-
-    PosPrinter.print(data, {
-      preview: false, // Preview in window or print
-      width: '250px', //  width of content body
-      margin: '0 0 10px 10px', // margin of content body
-      copies: 1, // Number of copies to print
-      printerName: printerName, // printerName: string, check it at webContent.getPrinters()
-      timeOutPerLine: 400,
-      silent: true,
-    }).catch((err) => console.log({ err }))
-  })
+    .catch((err) => console.log({ err }))
 })
 
 ipcMain.on('sendMessage', (_e, args) => {
@@ -80,6 +81,7 @@ ipcMain.on('sendMessage', (_e, args) => {
     expiresIn: '1d',
   })
 
+  // fetch(`http://localhost:8000/api/revalidate`, {
   fetch(`https://new-centralfood.vercel.app/api/revalidate`, {
     method: 'GET',
     headers: {

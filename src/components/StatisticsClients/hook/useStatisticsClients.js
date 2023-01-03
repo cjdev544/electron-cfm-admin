@@ -33,7 +33,11 @@ export default function useStatisticsClients() {
       let buyUser = {}
       const client = users?.find((user) => user.id === searchClient)
       const ordersClient = allOrders.filter((order) => {
-        if (order.usuario === searchClient) return order
+        if (order.usuario === searchClient) {
+          return order
+        } else {
+          return null
+        }
       })
 
       ordersClient.forEach((order) => {

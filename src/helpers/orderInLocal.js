@@ -8,6 +8,7 @@ export const orderInLocal = (order) => {
   let entrega = ''
   let totalMinusIVA
   let totalWhitIVA
+  let deliveryCost
 
   if (order?.horaEntrega !== 'Lo antes posible') {
     entrega = 'PROGRAMADA'
@@ -36,14 +37,20 @@ export const orderInLocal = (order) => {
     totalWhitIVA = order.totalProductos
   }
 
+  if (order.costoEnvio) {
+    deliveryCost = Number(order.costoEnvio)
+  } else {
+    deliveryCost = 0
+  }
+
   const minusIVA = ['Productos', `${totalMinusIVA}€`]
   const totalPlusIVA = ['IVA 10%', `${totalWhitIVA}€`]
-  const shipping = ['Costo envío', `${order?.costoEnvio}€`]
+  const shipping = ['Costo envío', `${deliveryCost}€`]
   const discount = [
     `Descuento ${order?.descuento?.cost || 0}%`,
     `${order?.totalProductos}€`,
   ]
-  const totalPrice = round(order?.totalProductos + order?.costoEnvio, 2)
+  const totalPrice = round(order?.totalProductos + deliveryCost, 2)
   const total = ['Total a pagar', `${totalPrice}€`]
   const totalCalculate = [minusIVA, totalPlusIVA, discount, shipping, total]
 

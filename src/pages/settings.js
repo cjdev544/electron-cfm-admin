@@ -9,6 +9,7 @@ export default function Settings() {
     'Costos de envío',
     'Cupones descuento',
     'Estadisticas',
+    'Buscar factura',
     'Cierre individual',
   ]
 

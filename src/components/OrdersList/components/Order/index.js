@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { formatDistanceStrict } from 'date-fns'
+import { format, formatDistanceStrict } from 'date-fns'
 import { round } from 'mathjs'
 
 import { getColorAlert } from '../../../../helpers/getColorAlert'
@@ -16,7 +16,7 @@ export default function Order({ order }) {
   const timeAgo = formatDistanceStrict(new Date(), order?.createdAt, {
     unit: 'minute',
   })
-  console.log(order)
+
   return (
     <Link to={`/order/${order.id}`} className='link'>
       <div className={style.order}>
@@ -24,6 +24,7 @@ export default function Order({ order }) {
           className={style.header}
           style={{ backgroundColor: `${colorAlert}` }}
         >
+          <p>Fecha: {format(order.createdAt, 'dd/MM/yy')}</p>
           <p>
             Realizado: <span>{timeAgo}</span>
           </p>

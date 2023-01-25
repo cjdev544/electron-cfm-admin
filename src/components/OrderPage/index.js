@@ -1,5 +1,6 @@
 import { round } from 'mathjs'
 import { Button, Form } from 'semantic-ui-react'
+import { format } from 'date-fns'
 
 import { printingLocal } from '../../helpers/printOrder'
 import useOrderPage from './hook/useOrderPage'
@@ -38,7 +39,7 @@ export default function OrderPage() {
       />
     )
   }
-
+  console.log(order)
   return (
     <div className={style.order}>
       <div
@@ -55,7 +56,7 @@ export default function OrderPage() {
             </Button>
           ) : null}
         </div>
-
+        <p>Fecha: {format(order.createdAt, 'dd/MM/yy')}</p>
         <p>
           Realizado: <span>{timeAgo}</span>{' '}
         </p>
@@ -141,7 +142,6 @@ export default function OrderPage() {
       <div className={style.total}>
         {order?.idPago ? (
           <>
-            <span>Pago N°: {order.idPago}</span>
             <p>Total pagado: {order.totalCompra}€</p>
           </>
         ) : (

@@ -11,6 +11,7 @@ export default function OptionCar({ option }) {
     'Cupones descuento': '/discount-admin',
     Estadisticas: '/statistics',
     'Primera compra': '/first-buy',
+    'Buscar factura': '/facture-admin',
     'Cierre individual': '/close-one-restaurant',
   }
 

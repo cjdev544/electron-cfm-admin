@@ -1,0 +1,10 @@
+.settings {
+  margin: 50px;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}

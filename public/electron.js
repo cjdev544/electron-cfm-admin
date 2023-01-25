@@ -77,12 +77,11 @@ ipcMain.on('print', (_e, args) => {
 
 ipcMain.on('sendMessage', (_e, args) => {
   const payload = { path: args }
-  const token = jwt.sign(payload, 'secret sing token here', {
+  const token = jwt.sign(payload, 'secret jwt sing', {
     expiresIn: '1d',
   })
 
-  // fetch(`http://localhost:8000/api/revalidate`, {
-  fetch(`https://centralfoodmalaga.com/api/revalidate`, {
+  fetch(`http://localhost:8000/api/revalidate`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

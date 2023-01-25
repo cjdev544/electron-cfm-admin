@@ -11,6 +11,8 @@ import ChangeCostShipping from '../ShippingPage/components/ChangeCostShipping'
 import StatisticsSell from '../StatisticsSell'
 import StatisticsClients from '../StatisticsClients'
 import StatisticsProducts from '../StatisticsProducts'
+import ForNumber from '../FacturePage/components/ForNumber'
+import ForName from '../FacturePage/components/ForName'
 import style from './OptionCar.module.css'
 
 export default function OptionCarComponent({ option, setComponent }) {
@@ -30,6 +32,8 @@ export default function OptionCarComponent({ option, setComponent }) {
     Ventas: <StatisticsSell />,
     Clientes: <StatisticsClients />,
     Productos: <StatisticsProducts />,
+    'Por número': <ForNumber />,
+    'Por nombre': <ForName />,
   }
 
   const handleClick = () => {

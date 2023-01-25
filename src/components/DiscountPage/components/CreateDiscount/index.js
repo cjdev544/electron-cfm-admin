@@ -21,7 +21,7 @@ export default function CreateDiscount() {
   const { discountFor, clientEmail } = formData
 
   const optionUsers = users?.map((user) => ({
-    key: user.email,
+    key: user.uid,
     text: user.email,
     value: user.email,
   }))
@@ -39,7 +39,7 @@ export default function CreateDiscount() {
           }
           onClick={() => setFormData({ ...formData, discountFor: 'all' })}
         >
-          Todos los restaurantes
+          Para todos los Clientes
         </div>
         <div
           className={style.button}

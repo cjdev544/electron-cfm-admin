@@ -57,7 +57,7 @@ export const orderIsShipping = (order) => {
       {
         type: 'text',
         value:
-          'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
+          'Teléfono: 649-71-88-31<br>Calle Martínez Maldonado 75<br>29007 Málaga, España<br><br>',
         style: { textAlign: 'center', fontSize: '12px' },
       },
       {
@@ -90,7 +90,7 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
+        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}<hr>`,
         style: {
           backgroundColor: '#000',
           color: '#000',
@@ -103,13 +103,22 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `Orden N°: ${order.id}<hr>`,
+        value: `Orden N°: ${order.facture}`,
         style: {
+          fontSize: '12px',
           fontFamily: 'sans-serif',
-          padding: '10px 0',
           textAlign: 'left',
           marginLeft: '0',
+        },
+      },
+      {
+        type: 'text',
+        value: `Cliente: ${order.username}<hr>`,
+        style: {
           fontSize: '12px',
+          fontFamily: 'sans-serif',
+          textAlign: 'left',
+          marginLeft: '0',
         },
       },
       {
@@ -168,17 +177,12 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `NOMBRE: ${order?.direccionEnvio?.name}<br>TELÉFONO: ${order?.direccionEnvio?.phone}<br><br>`,
+        value: `NOMBRE: ${order?.name}<br>TELÉFONO: ${order?.phone}<br><br>`,
         style: { textAlign: 'left' },
       },
       {
         type: 'text',
-        value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br>`,
-        style: { textAlign: 'left' },
-      },
-      {
-        type: 'text',
-        value: `ID usuario: ${order?.usuario}<br><hr>`,
+        value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br><hr>`,
         style: { textAlign: 'left' },
       },
       {
@@ -189,8 +193,11 @@ export const orderIsShipping = (order) => {
       {
         type: 'text',
         value: `${date} - ${hour}<br>`,
-        style: `text-align:center;`,
-        css: { 'font-size': '12px', 'font-family': 'sans-serif' },
+        style: {
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
+          textAlign: 'center',
+        },
       },
     ]
   } else {
@@ -203,7 +210,7 @@ export const orderIsShipping = (order) => {
       {
         type: 'text',
         value:
-          'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
+          'Teléfono: 649-71-88-31<br>Calle Martínez Maldonado 75<br>29007 Málaga, España<br><br>',
         style: { fontSize: '12px', textAlign: 'center' },
       },
       {
@@ -221,7 +228,7 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
+        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}<hr>`,
         style: {
           backgroundColor: '#000',
           color: '#000',
@@ -234,11 +241,20 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `Orden N°: ${order.id}<hr>`,
+        value: `Orden N°: ${order.facture}`,
         style: {
           fontSize: '12px',
           fontFamily: 'sans-serif',
-          padding: '10px 0',
+          textAlign: 'left',
+          marginLeft: '0',
+        },
+      },
+      {
+        type: 'text',
+        value: `Cliente: ${order.username}<hr>`,
+        style: {
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
           textAlign: 'left',
           marginLeft: '0',
         },
@@ -299,17 +315,12 @@ export const orderIsShipping = (order) => {
       },
       {
         type: 'text',
-        value: `NOMBRE: ${order?.direccionEnvio?.name}<br>TELÉFONO: ${order?.direccionEnvio?.phone}<br><br>`,
+        value: `NOMBRE: ${order?.name}<br>TELÉFONO: ${order?.phone}<br><br>`,
         style: { textAlign: 'left' },
       },
       {
         type: 'text',
-        value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br>`,
-        style: { textAlign: 'left' },
-      },
-      {
-        type: 'text',
-        value: `ID usuario: ${order?.usuario}<br><hr>`,
+        value: `DIRECCIÓN DE ENVIO: ${order?.direccionEnvio?.details}, ${order?.direccionEnvio?.zone?.address} - ${order?.direccionEnvio?.postalCode}<br><br><hr>`,
         style: { textAlign: 'left' },
       },
       {

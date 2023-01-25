@@ -58,7 +58,7 @@ export const orderInLocal = (order) => {
       {
         type: 'text',
         value:
-          'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
+          'Teléfono: 649-71-88-31<br>Calle Martínez Maldonado 75<br>29007 Málaga, España<br><br>',
         style: { textAlign: 'center', fontSize: '12px' },
       },
       {
@@ -91,7 +91,7 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
+        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}<hr>`,
         style: {
           backgroundColor: '#000',
           color: '#000',
@@ -104,13 +104,22 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `Orden N°: ${order.idPago}<hr>`,
+        value: `Orden N°: ${order.facture}`,
         style: {
+          fontSize: '12px',
           fontFamily: 'sans-serif',
-          padding: '10px 0',
           textAlign: 'left',
           marginLeft: '0',
+        },
+      },
+      {
+        type: 'text',
+        value: `Cliente: ${order.username}<hr>`,
+        style: {
           fontSize: '12px',
+          fontFamily: 'sans-serif',
+          textAlign: 'left',
+          marginLeft: '0',
         },
       },
       {
@@ -179,12 +188,7 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `RECOGIDA EN EL LOCAL<br><br>`,
-        style: { textAlign: 'left' },
-      },
-      {
-        type: 'text',
-        value: `ID usuario: ${order?.usuario}<br><hr>`,
+        value: `RECOGIDA EN EL LOCAL<br><br><hr>`,
         style: { textAlign: 'left' },
       },
       {
@@ -212,7 +216,7 @@ export const orderInLocal = (order) => {
       {
         type: 'text',
         value:
-          'Teléfono: 649-71-88-31<br>Av Carlos Haya, con calle Francisco Rueda Perez 1, local 7<br>29007 Málaga, España<br><br>',
+          'Teléfono: 649-71-88-31<br>Calle Martínez Maldonado 75<br>29007 Málaga, España<br><br>',
         style: { fontSize: '12px', textAlign: 'center' },
       },
       {
@@ -230,7 +234,7 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}`,
+        value: `ENTREGA<br>${entrega}<br>${order.fechaEntrega} ${order.horaEntrega}<hr>`,
         style: {
           backgroundColor: '#000',
           color: '#000',
@@ -243,11 +247,20 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `Orden N°: ${order.idPago}<hr>`,
+        value: `Orden N°: ${order.facture}`,
         style: {
           fontSize: '12px',
           fontFamily: 'sans-serif',
-          padding: '10px 0',
+          textAlign: 'left',
+          marginLeft: '0',
+        },
+      },
+      {
+        type: 'text',
+        value: `Cliente: ${order.username}<hr>`,
+        style: {
+          fontSize: '12px',
+          fontFamily: 'sans-serif',
           textAlign: 'left',
           marginLeft: '0',
         },
@@ -318,12 +331,7 @@ export const orderInLocal = (order) => {
       },
       {
         type: 'text',
-        value: `RECOGIDA EN EL LOCAL<br><br>`,
-        style: { textAlign: 'left' },
-      },
-      {
-        type: 'text',
-        value: `ID usuario: ${order?.usuario}<br><hr>`,
+        value: `RECOGIDA EN EL LOCAL<br><br><hr>`,
         style: { textAlign: 'left' },
       },
       {

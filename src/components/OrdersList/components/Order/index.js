@@ -16,7 +16,7 @@ export default function Order({ order }) {
   const timeAgo = formatDistanceStrict(new Date(), order?.createdAt, {
     unit: 'minute',
   })
-
+  console.log(order)
   return (
     <Link to={`/order/${order.id}`} className='link'>
       <div className={style.order}>
@@ -28,8 +28,13 @@ export default function Order({ order }) {
             Realizado: <span>{timeAgo}</span>
           </p>
           <p>
-            Pedido: <span>{order.id}</span>
+            Orden N°: <span>{order.facture}</span>
           </p>
+          {order?.idPago && (
+            <p>
+              Stripe ID: <span>{order.id}</span>
+            </p>
+          )}
         </div>
         {!order?.idPago ? (
           <div className={style.noPay}>

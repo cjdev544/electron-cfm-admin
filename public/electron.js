@@ -82,7 +82,7 @@ ipcMain.on('sendMessage', (_e, args) => {
   })
 
   // fetch(`http://localhost:8000/api/revalidate`, {
-  fetch(`https://new-centralfood.vercel.app/api/revalidate`, {
+  fetch(`https://centralfoodmalaga.com/api/revalidate`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

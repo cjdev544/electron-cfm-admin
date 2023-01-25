@@ -38,7 +38,7 @@ export default function OrderPage() {
       />
     )
   }
-  console.log(order)
+
   return (
     <div className={style.order}>
       <div
@@ -60,9 +60,14 @@ export default function OrderPage() {
           Realizado: <span>{timeAgo}</span>{' '}
         </p>
         <p>
-          Pedido: <span>{order.id}</span>
+          Orden N°: <span>{order.facture}</span>
         </p>
-        <p>Número de compra: {numberOrders}</p>
+        {order?.idPago && (
+          <p>
+            Stripe ID: <span>{order.id}</span>
+          </p>
+        )}
+        <p>Compras del Cliente: {numberOrders}</p>
       </div>
       {!order?.idPago ? (
         <div className={style.noPay}>

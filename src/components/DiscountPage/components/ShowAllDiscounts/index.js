@@ -26,9 +26,9 @@ export default function ShowAllDiscounts() {
   return (
     <div className={style.container}>
       <h1>Todos los descuentos</h1>
-      {discAll?.length && (
+      {discAll?.length ? (
         <>
-          <h3>Cupones aplicados a todos los restaurantes</h3>
+          <h3>Cupones aplicados a todos los Clientes</h3>
           <div className={style.flex}>
             {discAll.map((disc) => (
               <div key={disc.id} className={style.item}>
@@ -62,8 +62,8 @@ export default function ShowAllDiscounts() {
             ))}
           </div>
         </>
-      )}
-      {discClient?.length && (
+      ) : null}
+      {discClient?.length ? (
         <>
           <h3>Cupones aplicados a clientes especificos</h3>
           <div className={style.flex}>
@@ -89,7 +89,7 @@ export default function ShowAllDiscounts() {
                       Se puede utilizar: <span>{disc.expNumber} veces</span>
                     </p>
                     <p>
-                      Restan: <span>25</span>
+                      Restan: <span>{disc.expNumber - disc.use}</span>
                     </p>
                   </>
                 )}
@@ -97,7 +97,7 @@ export default function ShowAllDiscounts() {
             ))}
           </div>
         </>
-      )}
+      ) : null}
     </div>
   )
 }

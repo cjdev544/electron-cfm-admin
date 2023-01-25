@@ -100,7 +100,7 @@ export default function DiscountForm({ formData, setFormData }) {
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
         <Form.Input
-          label='Porcentaje de descueento'
+          label='Porcentaje de descuento'
           type='number'
           onChange={(e) =>
             setFormData({ ...formData, discount: e.target.value })
